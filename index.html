@@ -1,41 +1,210 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello Wold Page</title>
+    <title>Currículo - Alcileudo Gustavo Pupo Bezerra</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f6;
         }
         .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .cv-header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 20px;
             text-align: center;
-            background-color: #ffffff;
-            padding: 40px 60px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
         }
-        h1 {
-            color: #333;
-            font-size: 3em;
-            margin-bottom: 20px;
+        .cv-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
         }
-        p {
-            color: #666;
-            font-size: 1.2em;
+        .cv-header p {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+        .cv-header a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .cv-header a:hover {
+            color: #3498db;
+        }
+        .cv-section {
+            background-color: white;
+            padding: 25px 30px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .cv-section:last-child {
+            margin-bottom: 0;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+        .cv-section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .cv-section h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #34495e;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .cv-section p, .cv-section li {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+        .cv-section ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-top: 0.5rem;
+        }
+        .cv-section .date-location {
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        .cv-section .skills-list span {
+            display: inline-block;
+            background-color: #e0e7ff;
+            color: #4338ca;
+            padding: 0.25rem 0.75rem;
+            margin: 0.25rem;
+            border-radius: 0.375rem;
+            font-size: 0.9rem;
+            vertical-align: middle;
+        }
+        @media print {
+            body { background-color: white !important; margin: 0; padding: 0; font-size: 10pt; }
+            .container { max-width: 100% !important; box-shadow: none !important; padding: 0 !important; }
+            .cv-header { background-color: #2c3e50 !important; color: white !important; -webkit-print-color-adjust: exact; color-adjust: exact; padding: 20px !important; border-radius: 0 !important; }
+            .cv-header h1 { font-size: 1.8rem !important; }
+            .cv-header p { font-size: 0.9rem !important; }
+            .cv-header a { color: #ecf0f1 !important; }
+            .cv-section { box-shadow: none !important; margin-bottom: 10px !important; padding: 15px !important; border: 1px solid #eee !important; border-radius: 0 !important; }
+            .cv-section h2 { font-size: 1.3rem !important; color: #2c3e50 !important; border-bottom: 1px solid #3498db !important; -webkit-print-color-adjust: exact; color-adjust: exact; padding-bottom: 0.3rem !important; margin-bottom: 0.8rem !important; }
+            .cv-section h3 { font-size: 1.1rem !important; }
+            .cv-section p, .cv-section li { font-size: 0.9rem !important; line-height: 1.5 !important; }
+            .cv-section .skills-list span { display: inline-block !important; background-color: transparent !important; color: #333333 !important; padding: 2px 5px !important; margin: 2px 3px !important; border: 1px solid #aaaaaa !important; border-radius: 0.25rem !important; font-size: 0.85rem !important; box-shadow: none !important; vertical-align: middle !important; }
+            .cv-section div.skills-list p { line-height: 1.8 !important; margin-bottom: 0.5rem !important; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Hello Woooooooooooooooooorld!</h1>
-        <p>This is a simple test page created with HTML and CSS.</p>
+    <div class="container p-4 md:p-8">
+        <header class="cv-header">
+            <h1>ALCILEUDO GUSTAVO PUPO BEZERRA</h1>
+            <p><i class="fas fa-map-marker-alt mr-2"></i>São Paulo, SP (Disponibilidade para Trabalho Remoto ou Híbrido)</p>
+            <p><i class="fas fa-phone-alt mr-2"></i><a href="https://wa.me/5511941514386" target="_blank" rel="noopener noreferrer">(11) 94151-4386</a></p>
+            <p><i class="fas fa-envelope mr-2"></i><a href="mailto:gustavopupo49@gmail.com">gustavopupo49@gmail.com</a></p>
+            <p><i class="fab fa-linkedin mr-2"></i><a href="https://www.linkedin.com/in/alcileudo-bezerra" target="_blank" rel="noopener noreferrer">linkedin.com/in/alcileudo-bezerra</a></p>
+            <p><i class="fab fa-github mr-2"></i><a href="https://github.com/pupo68" target="_blank" rel="noopener noreferrer">github.com/pupo68</a></p>
+        </header>
+
+        <main>
+            <section class="cv-section">
+                <h2><i class="fas fa-rocket mr-2"></i>RESUMO</h2>
+                <p>Estudante de Análise e Desenvolvimento de Sistemas com um perfil híbrido que une visão de negócios e competência técnica. Minha jornada é marcada pela resiliência e por um espírito empreendedor, demonstrado pela iniciativa de financiar meus objetivos e pela transição de carreira da Administração para a Tecnologia. Possuo uma base sólida em **análise de dados**, **automação de processos** e **desenvolvimento de software**, com forte interesse em aplicar essas habilidades para resolver problemas complexos, especialmente no setor financeiro e em projetos de inovação com Inteligência Artificial. Busco oportunidades desafiadoras onde eu possa aprender, contribuir e crescer profissionalmente.</p>
+            </section>
+
+            <section class="cv-section">
+                <h2><i class="fas fa-graduation-cap mr-2"></i>FORMAÇÃO ACADÊMICA</h2>
+                <div>
+                    <h3>Superior de Tecnologia em Análise e Desenvolvimento de Sistemas</h3>
+                    <p class="date-location">Pontifícia Universidade Católica do Paraná (PUCPR) — Cursando (4º Semestre), Conclusão Prevista: Junho de 2026</p>
+                </div>
+                <div class="mt-4">
+                    <h3>Bacharelado em Administração (Incompleto)</h3>
+                    <p class="date-location">Pontifícia Universidade Católica do Paraná (PUCPR) — Período: Janeiro de 2023 - Dezembro de 2023</p>
+                    <p><em>Experiência que proporcionou uma base em visão de negócio, processos e comunicação com stakeholders.</em></p>
+                </div>
+            </section>
+            
+            <section class="cv-section">
+                <h2><i class="fas fa-briefcase mr-2"></i>EXPERIÊNCIA PROFISSIONAL</h2>
+                <div>
+                    <h3>Estagiário de Automação de Processos e Gerenciamento de Dados</h3>
+                    <p class="date-location">Grupo Moura — Jan/2025 - Mar/2025</p>
+                    <ul>
+                        <li>Análise de processos operacionais para identificar oportunidades de melhoria e automação.</li>
+                        <li>Desenvolvimento de scripts em Python para automação de tarefas, extração e manipulação de dados.</li>
+                        <li>Realização do processo de ETL (Extração, Transformação e Carga) utilizando Power Query para preparar dados para análise.</li>
+                        <li>Criação de dashboards e relatórios interativos em Power BI para monitoramento de indicadores e suporte à tomada de decisão.</li>
+                        <li>Colaboração com equipes multidisciplinares, atuando na interface entre as áreas de negócio e tecnologia.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="cv-section">
+                <h2><i class="fas fa-project-diagram mr-2"></i>PROJETOS E INICIATIVAS</h2>
+                <div>
+                    <h3>Plataforma Web para Gerenciamento de Serviços</h3>
+                    <p>Desenvolvi uma solução full-stack que demonstra a aplicação de lógica de programação para criar um sistema funcional. O projeto envolveu a modelagem e estruturação de um banco de dados relacional (MySQL), a manipulação de dados com SQL, a construção do back-end (PHP) e o desenvolvimento de uma interface de usuário (HTML, CSS, JavaScript). Todo o processo foi versionado com Git, reforçando boas práticas de desenvolvimento.</p>
+                     <p class="mt-1"><strong>Link (GitHub):</strong> <a href="https://github.com/pupo68/plataforma-prestadores-servicos" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">github.com/pupo68/plataforma-prestadores-servicos</a></p>
+                </div>
+                <div class="mt-4">
+                    <h3>Iniciativa Empreendedora</h3>
+                    <p>Idealizei e executei um projeto pessoal de importação e comercialização de produtos dos Estados Unidos para o mercado local no Acre. A iniciativa envolveu planejamento logístico, análise de custos, estratégias de venda e gestão financeira, com o objetivo de financiar minha transição profissional e mudança para São Paulo. Este projeto demonstra na prática habilidades de planejamento, execução orientada a metas e resiliência.</p>
+                </div>
+            </section>
+
+            <section class="cv-section">
+                <h2><i class="fas fa-cogs mr-2"></i>HABILIDADES TÉCNICAS</h2>
+                <div class="skills-list">
+                    <p><strong>Linguagens de Programação:</strong> <span>Python</span> <span>SQL</span> <span>PHP</span> <span>JavaScript</span> <span>HTML & CSS</span></p>
+                    <p><strong>Análise de Dados e BI:</strong> <span>Power BI</span> <span>Excel (Avançado)</span> <span>ETL (Power Query)</span> <span>Modelagem de Dados</span></p>
+                    <p><strong>Bancos de Dados:</strong> <span>MySQL</span> <span>Postgres (Básico)</span></p>
+                    <p><strong>Ferramentas e Metodologias:</strong> <span>Git / GitHub</span> <span>APIs (REST)</span> <span>Metodologia Ágil (Familiaridade)</span> <span>Docker (Básico)</span></p>
+                    <p><strong>Áreas de Interesse e Estudo:</strong> <span>Machine Learning</span> <span>Inteligência Artificial Generativa</span> <span>Cloud (AWS)</span></p>
+                </div>
+            </section>
+
+            <section class="cv-section">
+                <h2><i class="fas fa-users-cog mr-2"></i>COMPETÊNCIAS COMPORTAMENTAIS</h2>
+                 <ul>
+                    <li><strong>Resiliência e Perfil Empreendedor:</strong> Determinação para superar desafios e iniciativa para criar oportunidades e alcançar metas.</li>
+                    <li><strong>Proatividade e Resolução de Problemas:</strong> Capacidade de trabalhar de forma autônoma, investigar desafios e propor soluções eficazes.</li>
+                    <li><strong>Habilidade Analítica:</strong> Facilidade para analisar dados e processos, identificar padrões e gerar insights.</li>
+                    <li><strong>Comunicação e Colaboração:</strong> Habilidade para atuar como ponte entre áreas técnicas e de negócio, trabalhando bem em equipe.</li>
+                    <li><strong>Curiosidade e Aprendizado Contínuo:</strong> Grande interesse em novas tecnologias, mercado financeiro e desenvolvimento profissional.</li>
+                 </ul>
+            </section>
+
+            <section class="cv-section">
+                <h2><i class="fas fa-language mr-2"></i>IDIOMAS</h2>
+                 <ul>
+                    <li><strong>Português:</strong> Fluente (Nativo)</li>
+                    <li><strong>Inglês:</strong> Intermediário (Foco em Leitura Técnica - Reading)</li>
+                 </ul>
+            </section>
+
+        </main>
+        <footer class="text-center py-8 text-gray-600 text-sm">
+            <p>&copy; <span id="currentYear"></span> Alcileudo Gustavo Pupo Bezerra. Todos os direitos reservados.</p>
+        </footer>
     </div>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
