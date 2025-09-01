@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - Seu Nome</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        :root {
+            --background-color: #121212;
+            --text-color: #e0e0e0;
+            --primary-color: #bb86fc;
+            --surface-color: #1e1e1e;
+            --grid-gap: 1rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .portfolio-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Cabeçalho do Perfil */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #333;
+            flex-wrap: wrap; /* Para telas menores */
+        }
+
+        .profile-image img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #333;
+            margin-right: 2rem;
+        }
+
+        .profile-info h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-info p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #a0a0a0;
+            margin-bottom: 1rem;
+        }
+
+        .profile-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            margin-right: 1.5rem;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Grade de Fotos */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--grid-gap);
+        }
+
+        .grid-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: var(--surface-color);
+            cursor: pointer;
+            aspect-ratio: 1 / 1.2; /* Proporção mais vertical, como no Instagram */
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease-out, filter 0.4s ease;
+        }
+
+        .grid-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .grid-item:hover img {
+            transform: scale(1.05);
+            filter: brightness(0.8);
+        }
+
+        .grid-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay h3 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .overlay p {
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .profile-image img {
+                margin: 0 0 1.5rem 0;
+            }
+            .social-links {
+                margin-top: 1rem;
+            }
+            .photo-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .photo-grid {
+                gap: 0.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="portfolio-container">
+        <header class="profile-header">
+            <div class="profile-image">
+                <img src="https://picsum.photos/id/237/150/150" alt="Foto do Perfil">
+            </div>
+            <div class="profile-info">
+                <h1>Seu Nome Aqui</h1>
+                <p>Fotógrafo(a) | Artista Visual | Diretor(a) de Arte<br>Representado por <a href="#" target="_blank">@sua_agencia</a></p>
+                <div class="social-links">
+                    <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:seuemail@exemplo.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </header>
+
+        <main class="photo-grid">
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1542038784-56eD8DE0e332?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Descrição da Imagem 1">
+                <div class="overlay">
+                    <h3>Projeto Avante</h3>
+                    <p>Editorial para Revista Vogue</p>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1512485694743-9c9528b87462?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Descrição da Imagem 2">
+                <div class="overlay">
+                    <h3>Sombra e Luz</h3>
+                    <p>Estudo Pessoal</p>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1534030347209-467a5b0aa3e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Descrição da Imagem 3">
+                <div class="overlay">
+                    <h3>Urban Elegance</h3>
+                    <p>Campanha para Marca X</p>
+                </div>
+            </div>
+            
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Descrição da Imagem 4">
+                <div class="overlay">
+                    <h3>Retrato Íntimo</h3>
+                    <p>Coleção Privada</p>
+                </div>
+            </div>
+            
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1581338834647-b5fb3160b788?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Descrição da Imagem 5">
+                <div class="overlay">
+                    <h3>Flor da Pele</h3>
+                    <p>Ensaio Conceitual</p>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1519058082700-08f0b5d91844?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Descrição da Imagem 6">
+                <div class="overlay">
+                    <h3>Neon Dreams</h3>
+                    <p>Fotografia Noturna</p>
+                </div>
+            </div>
+
+            </main>
+    </div>
+
+</body>
+</html>
