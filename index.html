@@ -6,39 +6,56 @@
     <title>Currículo - Alcileudo Gustavo Pupo Bezerra</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f4f7f6;
+            color: #2c3e50;
         }
-        .container {
-            max-width: 900px;
+        /* Layout principal */
+        .cv-container {
+            max-width: 1200px;
             margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        .cv-header {
+        /* Sidebar */
+        .cv-sidebar {
             background-color: #2c3e50;
             color: white;
-            padding: 40px 20px;
-            text-align: center;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
         }
-        .cv-header h1 {
-            font-size: 2.5rem;
+        .cv-sidebar h2 {
+            font-size: 1.5rem;
             font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .cv-sidebar a {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
             margin-bottom: 0.5rem;
-        }
-        .cv-header p {
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
-        }
-        .cv-header a {
-            color: #ecf0f1;
+            border-radius: 0.375rem;
+            transition: background-color 0.3s, transform 0.2s;
             text-decoration: none;
-            transition: color 0.3s;
+            color: white;
+            font-weight: 600;
         }
-        .cv-header a:hover {
-            color: #3498db;
+        .cv-sidebar a:hover {
+            background-color: #34495e;
+            transform: translateX(5px);
+        }
+        .cv-sidebar a i {
+            margin-right: 0.75rem;
+            width: 1.25rem;
+            text-align: center;
+        }
+        /* Conteúdo do currículo */
+        .cv-content {
+            background-color: #f4f7f6;
+            padding: 2rem;
         }
         .cv-section {
             background-color: white;
@@ -49,8 +66,6 @@
         }
         .cv-section:last-child {
             margin-bottom: 0;
-            border-bottom-left-radius: 8px;
-            border-bottom-right-radius: 8px;
         }
         .cv-section h2 {
             font-size: 1.5rem;
@@ -93,9 +108,35 @@
             font-size: 0.9rem;
             vertical-align: middle;
         }
+        .cv-header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .cv-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .cv-header p {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+        .cv-header a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .cv-header a:hover {
+            color: #3498db;
+        }
+        /* Versão para Impressão */
         @media print {
             body { background-color: white !important; margin: 0; padding: 0; font-size: 10pt; }
-            .container { max-width: 100% !important; box-shadow: none !important; padding: 0 !important; }
+            .cv-container { box-shadow: none !important; border-radius: 0 !important; max-width: 100% !important; flex-direction: column !important; }
+            .cv-sidebar { display: none !important; }
+            .cv-content { padding: 0 !important; }
             .cv-header { background-color: #2c3e50 !important; color: white !important; -webkit-print-color-adjust: exact; color-adjust: exact; padding: 20px !important; border-radius: 0 !important; }
             .cv-header h1 { font-size: 1.8rem !important; }
             .cv-header p { font-size: 0.9rem !important; }
@@ -106,27 +147,43 @@
             .cv-section p, .cv-section li { font-size: 0.9rem !important; line-height: 1.5 !important; }
             .cv-section .skills-list span { display: inline-block !important; background-color: transparent !important; color: #333333 !important; padding: 2px 5px !important; margin: 2px 3px !important; border: 1px solid #aaaaaa !important; border-radius: 0.25rem !important; font-size: 0.85rem !important; box-shadow: none !important; vertical-align: middle !important; }
             .cv-section div.skills-list p { line-height: 1.8 !important; margin-bottom: 0.5rem !important; }
+            footer { display: none; }
         }
     </style>
 </head>
 <body>
-    <div class="container p-4 md:p-8">
-        <header class="cv-header">
-            <h1>ALCILEUDO GUSTAVO PUPO BEZERRA</h1>
-            <p><i class="fas fa-map-marker-alt mr-2"></i>São Paulo, SP (Disponibilidade para Trabalho Remoto ou Híbrido)</p>
-            <p><i class="fas fa-phone-alt mr-2"></i><a href="https://wa.me/5511941514386" target="_blank" rel="noopener noreferrer">(11) 94151-4386</a></p>
-            <p><i class="fas fa-envelope mr-2"></i><a href="mailto:gustavopupo49@gmail.com">gustavopupo49@gmail.com</a></p>
-            <p><i class="fab fa-linkedin mr-2"></i><a href="https://www.linkedin.com/in/alcileudo-bezerra" target="_blank" rel="noopener noreferrer">linkedin.com/in/alcileudo-bezerra</a></p>
-            <p><i class="fab fa-github mr-2"></i><a href="https://github.com/pupo68" target="_blank" rel="noopener noreferrer">github.com/pupo68</a></p>
-        </header>
+    <div class="cv-container flex flex-col lg:flex-row">
+        <aside class="cv-sidebar p-8 w-full lg:w-1/4 flex-shrink-0">
+            <nav>
+                <h2 class="hidden lg:block">Navegação</h2>
+                <ul class="flex lg:flex-col justify-center gap-2 flex-wrap">
+                    <li><a href="#resumo" class="group"><i class="fas fa-user-circle group-hover:text-cyan-400"></i> Resumo</a></li>
+                    <li><a href="#formacao" class="group"><i class="fas fa-graduation-cap group-hover:text-cyan-400"></i> Formação</a></li>
+                    <li><a href="#experiencia" class="group"><i class="fas fa-briefcase group-hover:text-cyan-400"></i> Experiência</a></li>
+                    <li><a href="#projetos" class="group"><i class="fas fa-project-diagram group-hover:text-cyan-400"></i> Projetos</a></li>
+                    <li><a href="#habilidades" class="group"><i class="fas fa-cogs group-hover:text-cyan-400"></i> Habilidades</a></li>
+                    <li><a href="#competencias" class="group"><i class="fas fa-users-cog group-hover:text-cyan-400"></i> Competências</a></li>
+                    <li><a href="#idiomas" class="group"><i class="fas fa-language group-hover:text-cyan-400"></i> Idiomas</a></li>
+                </ul>
+            </nav>
+        </aside>
 
-        <main>
-            <section class="cv-section">
+        <main class="cv-content w-full lg:w-3/4 flex-grow">
+            <header class="cv-header">
+                <h1>ALCILEUDO GUSTAVO PUPO BEZERRA</h1>
+                <p><i class="fas fa-map-marker-alt mr-2"></i>São Paulo, SP (Disponibilidade para Trabalho Remoto ou Híbrido)</p>
+                <p><i class="fas fa-phone-alt mr-2"></i><a href="https://wa.me/5511941514386" target="_blank" rel="noopener noreferrer">(11) 94151-4386</a></p>
+                <p><i class="fas fa-envelope mr-2"></i><a href="mailto:gustavopupo49@gmail.com">gustavopupo49@gmail.com</a></p>
+                <p><i class="fab fa-linkedin mr-2"></i><a href="https://www.linkedin.com/in/alcileudo-bezerra" target="_blank" rel="noopener noreferrer">linkedin.com/in/alcileudo-bezerra</a></p>
+                <p><i class="fab fa-github mr-2"></i><a href="https://github.com/pupo68" target="_blank" rel="noopener noreferrer">github.com/pupo68</a></p>
+            </header>
+
+            <section id="resumo" class="cv-section">
                 <h2><i class="fas fa-rocket mr-2"></i>RESUMO</h2>
                 <p>Estudante de Análise e Desenvolvimento de Sistemas com um perfil híbrido que une visão de negócios e competência técnica. Minha jornada é marcada pela resiliência e por um espírito empreendedor, demonstrado pela iniciativa de financiar meus objetivos e pela transição de carreira da Administração para a Tecnologia. Possuo uma base sólida em **análise de dados**, **automação de processos** e **desenvolvimento de software**, com forte interesse em aplicar essas habilidades para resolver problemas complexos, especialmente no setor financeiro e em projetos de inovação com Inteligência Artificial. Busco oportunidades desafiadoras onde eu possa aprender, contribuir e crescer profissionalmente.</p>
             </section>
 
-            <section class="cv-section">
+            <section id="formacao" class="cv-section">
                 <h2><i class="fas fa-graduation-cap mr-2"></i>FORMAÇÃO ACADÊMICA</h2>
                 <div>
                     <h3>Superior de Tecnologia em Análise e Desenvolvimento de Sistemas</h3>
@@ -139,7 +196,7 @@
                 </div>
             </section>
             
-            <section class="cv-section">
+            <section id="experiencia" class="cv-section">
                 <h2><i class="fas fa-briefcase mr-2"></i>EXPERIÊNCIA PROFISSIONAL</h2>
                 <div>
                     <h3>Estagiário de Automação de Processos e Gerenciamento de Dados</h3>
@@ -154,7 +211,7 @@
                 </div>
             </section>
 
-            <section class="cv-section">
+            <section id="projetos" class="cv-section">
                 <h2><i class="fas fa-project-diagram mr-2"></i>PROJETOS E INICIATIVAS</h2>
                 <div>
                     <h3>Plataforma Web para Gerenciamento de Serviços</h3>
@@ -167,7 +224,7 @@
                 </div>
             </section>
 
-            <section class="cv-section">
+            <section id="habilidades" class="cv-section">
                 <h2><i class="fas fa-cogs mr-2"></i>HABILIDADES TÉCNICAS</h2>
                 <div class="skills-list">
                     <p><strong>Linguagens de Programação:</strong> <span>Python</span> <span>SQL</span> <span>PHP</span> <span>JavaScript</span> <span>HTML & CSS</span></p>
@@ -178,7 +235,7 @@
                 </div>
             </section>
 
-            <section class="cv-section">
+            <section id="competencias" class="cv-section">
                 <h2><i class="fas fa-users-cog mr-2"></i>COMPETÊNCIAS COMPORTAMENTAIS</h2>
                  <ul>
                     <li><strong>Resiliência e Perfil Empreendedor:</strong> Determinação para superar desafios e iniciativa para criar oportunidades e alcançar metas.</li>
@@ -189,7 +246,7 @@
                  </ul>
             </section>
 
-            <section class="cv-section">
+            <section id="idiomas" class="cv-section">
                 <h2><i class="fas fa-language mr-2"></i>IDIOMAS</h2>
                  <ul>
                     <li><strong>Português:</strong> Fluente (Nativo)</li>
@@ -197,10 +254,10 @@
                  </ul>
             </section>
 
+            <footer class="text-center py-8 text-gray-600 text-sm">
+                <p>&copy; <span id="currentYear"></span> Alcileudo Gustavo Pupo Bezerra. Todos os direitos reservados.</p>
+            </footer>
         </main>
-        <footer class="text-center py-8 text-gray-600 text-sm">
-            <p>&copy; <span id="currentYear"></span> Alcileudo Gustavo Pupo Bezerra. Todos os direitos reservados.</p>
-        </footer>
     </div>
 
     <script>
