@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -49,45 +48,63 @@
         }
         .nav-links a:hover { color: var(--primary-color); }
 
-        /* --- HERO CAROUSEL (NOVO ESTILO) --- */
+        /* --- HERO CAROUSEL --- */
         .hero-carousel-section {
-            width: 100%;
-            height: 80vh; /* Altura ajustada para um carrossel */
+            width: 100%; height: 80vh; display: flex; align-items: center;
+            padding-top: 5rem;
+        }
+        .hero-carousel { width: 100%; height: 100%; }
+        .hero-carousel .swiper-slide { border-radius: 12px; overflow: hidden; }
+        .hero-carousel .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-carousel .swiper-button-next, .hero-carousel .swiper-button-prev {
+            color: var(--primary-color); transition: transform 0.2s ease;
+        }
+        .hero-carousel .swiper-button-next:hover, .hero-carousel .swiper-button-prev:hover { transform: scale(1.2); }
+        .hero-carousel .swiper-pagination-bullet { background-color: rgba(255, 255, 255, 0.5); width: 10px; height: 10px; }
+        .hero-carousel .swiper-pagination-bullet-active { background-color: var(--primary-color); }
+        
+        /* --- 3D TICKER (NOVA SEÇÃO) --- */
+        .ticker-section {
+            padding: 6rem 0;
+            overflow: hidden;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        .ticker-3d-wrapper {
             display: flex;
-            align-items: center;
-            padding-top: 5rem; /* Espaço para a navegação não sobrepor */
+            width: max-content;
+            animation: ticker 45s linear infinite;
         }
-        .hero-carousel {
-            width: 100%;
-            height: 100%;
+        .ticker-3d {
+            display: flex;
+            transform-style: preserve-3d;
+            perspective: 800px;
         }
-        .hero-carousel .swiper-slide {
+        .ticker-item {
+            width: 250px;
+            height: 350px;
+            margin: 0 1.5rem;
             border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.4s ease, opacity 0.4s ease;
+            transform: rotateY(20deg) scale(0.9);
+            transition: transform 0.5s ease;
+            cursor: pointer;
         }
-        .hero-carousel .swiper-slide img {
+        .ticker-item:hover {
+            transform: rotateY(0) scale(1.05);
+        }
+        .ticker-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        /* Estilização da Navegação e Paginação do Swiper */
-        .hero-carousel .swiper-button-next,
-        .hero-carousel .swiper-button-prev {
-            color: var(--primary-color);
-            transition: transform 0.2s ease;
-        }
-        .hero-carousel .swiper-button-next:hover,
-        .hero-carousel .swiper-button-prev:hover {
-            transform: scale(1.2);
-        }
-        .hero-carousel .swiper-pagination-bullet {
-            background-color: rgba(255, 255, 255, 0.5);
-            width: 10px;
-            height: 10px;
-        }
-        .hero-carousel .swiper-pagination-bullet-active {
-            background-color: var(--primary-color);
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         /* --- CONTROLES DA GALERIA E FILTROS --- */
@@ -125,17 +142,13 @@
             position: relative; transform: scale(0.95); transition: transform 0.4s ease;
         }
         .filters-modal.open .modal-content { transform: scale(1); }
-        .modal-content h3 {
-            font-family: var(--font-display); font-size: 2rem; margin-bottom: 2rem;
-        }
+        .modal-content h3 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 2rem; }
         .close-btn {
             position: absolute; top: 1rem; right: 1.5rem; background: none; border: none;
             color: var(--secondary-color); font-size: 2rem; cursor: pointer; transition: color 0.3s ease;
         }
         .close-btn:hover { color: var(--primary-color); }
-        .secondary-filters-grid {
-            display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center;
-        }
+        .secondary-filters-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
 
         /* --- MASONRY GALLERY --- */
         .gallery-section { padding: 4rem 3rem; }
@@ -147,16 +160,11 @@
             overflow: hidden; border-radius: 8px;
             transition: transform 0.5s ease, opacity 0.5s ease, width 0.5s ease, height 0.5s ease, padding 0.5s ease, margin 0.5s ease;
         }
-        .grid-item.hidden {
-            transform: scale(0.8); opacity: 0; width: 0; height: 0;
-            padding: 0; margin: 0; overflow: hidden;
-        }
+        .grid-item.hidden { transform: scale(0.8); opacity: 0; width: 0; height: 0; padding: 0; margin: 0; }
         .grid-item:nth-child(11n+2) { grid-row: span 2; }
         .grid-item:nth-child(11n+5) { grid-row: span 2; }
         .grid-item:nth-child(11n+9) { grid-row: span 2; }
-        .grid-item img {
-            width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;
-        }
+        .grid-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
         .grid-item:hover img { transform: scale(1.05); }
         
         /* --- Animação de Scroll --- */
@@ -171,8 +179,8 @@
             .main-nav { padding: 1rem 1.5rem; position: absolute; }
             .nav-links { display: none; }
             .hero-carousel-section { height: 60vh; padding-top: 4rem; }
-            .gallery-section, .gallery-controls { padding: 3rem 1rem; }
-            .gallery-controls { flex-direction: column; gap: 1rem; }
+            .ticker-section, .gallery-section { padding: 3rem 0; }
+            .gallery-controls { padding: 0 1rem 2rem; flex-direction: column; gap: 1rem; }
         }
     </style>
 </head>
@@ -200,6 +208,26 @@
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-pagination"></div>
+        </div>
+    </section>
+    
+    <section class="ticker-section">
+        <h2 class="section-title" data-scroll>Trabalhos Recentes</h2>
+        <div class="ticker-3d">
+            <div class="ticker-3d-wrapper">
+                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=1964" alt="Retrato"></div>
+                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1512485694743-9c9528b87462?auto=format&fit=crop&q=80&w=1974" alt="Still Life"></div>
+                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=1974" alt="Editorial de moda"></div>
+                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1488161628813-04466f872d24?auto=format&fit=crop&q=80&w=2070" alt="Homem em exterior"></div>
+                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=1961" alt="Retrato beleza"></div>
+                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=1974" alt="Retrato casual"></div>
+                 <div class="ticker-item"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=1964" alt="Retrato"></div>
+                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1512485694743-9c9528b87462?auto=format&fit=crop&q=80&w=1974" alt="Still Life"></div>
+                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=1974" alt="Editorial de moda"></div>
+                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1488161628813-04466f872d24?auto=format&fit=crop&q=80&w=2070" alt="Homem em exterior"></div>
+                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=1961" alt="Retrato beleza"></div>
+                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=1974" alt="Retrato casual"></div>
+            </div>
         </div>
     </section>
 
@@ -252,36 +280,15 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // --- INICIALIZAÇÃO DO HERO CAROUSEL (CONFIGURAÇÃO ATUALIZADA) ---
+        // --- INICIALIZAÇÃO DO HERO CAROUSEL ---
         const swiper = new Swiper('.hero-carousel', {
-            loop: true,
-            centeredSlides: true,
-            slidesPerView: 1.5, // Começa mostrando 1 slide e meio
-            spaceBetween: 20,
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            // Pontos de quebra para responsividade
+            loop: true, centeredSlides: true, slidesPerView: 1.5, spaceBetween: 20,
+            autoplay: { delay: 4000, disableOnInteraction: false },
+            pagination: { el: '.swiper-pagination', clickable: true },
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
             breakpoints: {
-                // Quando a tela for >= 768px
-                768: {
-                    slidesPerView: 2.5,
-                    spaceBetween: 30
-                },
-                // Quando a tela for >= 1200px
-                1200: {
-                    slidesPerView: 3.5,
-                    spaceBetween: 40
-                }
+                768: { slidesPerView: 2.5, spaceBetween: 30 },
+                1200: { slidesPerView: 3.5, spaceBetween: 40 }
             }
         });
 
