@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>João Viegas - Fotógrafo</title>
+    <title>João Viegas | Fotógrafo de Moda e Retratos</title>
+    <meta name="description" content="Portfólio de João Viegas, fotógrafo especializado em editorial de moda, retratos e campanhas publicitárias. Disponível para projetos.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
@@ -22,7 +22,6 @@
             --font-display: 'Syne', sans-serif;
             --font-body: 'Inter', sans-serif;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
@@ -31,7 +30,14 @@
             font-family: var(--font-body);
             overflow-x: hidden;
         }
-
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .section { padding: 6rem 0; }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
         /* --- NAVEGAÇÃO --- */
         .main-nav {
             position: absolute; top: 0; left: 0; width: 100%;
@@ -42,173 +48,125 @@
             font-family: var(--font-display); font-weight: 800; font-size: 1.5rem;
             text-decoration: none; color: var(--text-color);
         }
-        .nav-links a {
-            color: var(--secondary-color); text-decoration: none; margin-left: 2rem;
-            font-weight: 400; transition: color 0.3s ease;
-        }
+        .nav-links { display: flex; align-items: center; gap: 2rem; }
+        .nav-links a { color: var(--secondary-color); text-decoration: none; font-weight: 400; transition: color 0.3s ease; }
         .nav-links a:hover { color: var(--primary-color); }
+        .nav-cta-button {
+            background-color: var(--primary-color); color: var(--bg-color);
+            padding: 0.6rem 1.2rem; border-radius: 30px; font-weight: 700;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .nav-cta-button:hover { background-color: #ccc; }
 
         /* --- HERO SLIDER --- */
-        .hero-slider {
-            width: 100%;
-            height: 100vh;
-            position: relative;
-        }
-        .hero-slider .swiper-slide {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            overflow: hidden;
-        }
-        .slide-image {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.6);
-            transform: scale(1.1);
-            transition: transform 8s ease-out;
-        }
-        .swiper-slide-active .slide-image {
-            transform: scale(1);
-        }
-        .slide-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            max-width: 800px;
-        }
+        .hero-slider { width: 100%; height: 100vh; position: relative; }
+        .hero-slider .swiper-slide { display: flex; justify-content: center; align-items: center; color: white; overflow: hidden; }
+        .slide-image { position: absolute; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); transform: scale(1.1); transition: transform 8s ease-out; }
+        .swiper-slide-active .slide-image { transform: scale(1); }
+        .slide-content { position: relative; z-index: 10; text-align: center; max-width: 800px; }
         .slide-content h1 {
             font-family: var(--font-display);
             font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 800;
-            line-height: 1.1;
-            transform: translateY(30px);
-            opacity: 0;
-            transition: transform 0.8s ease, opacity 0.8s ease;
-            transition-delay: 0.3s;
+            font-weight: 800; line-height: 1.1;
+            transform: translateY(30px); opacity: 0;
+            transition: transform 0.8s ease, opacity 0.8s ease; transition-delay: 0.3s;
         }
-        .swiper-slide-active .slide-content h1 {
-            transform: translateY(0);
-            opacity: 1;
-        }
+        .swiper-slide-active .slide-content h1 { transform: translateY(0); opacity: 1; }
         
         /* --- 3D TICKER --- */
-        .ticker-section {
-            padding: 6rem 0;
-            overflow: hidden;
-        }
-        .section-title {
-            font-family: var(--font-display);
-            font-size: 3rem;
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-        .ticker-3d-wrapper {
-            display: flex;
-            width: max-content;
-            animation: ticker 60s linear infinite;
-        }
-        .ticker-3d {
-            display: flex;
-            transform-style: preserve-3d;
-            perspective: 800px;
-        }
+        .ticker-section { padding: 6rem 0; overflow: hidden; }
+        .ticker-3d-wrapper { display: flex; width: max-content; animation: ticker 60s linear infinite; }
+        .ticker-3d { display: flex; transform-style: preserve-3d; perspective: 800px; }
         .ticker-item {
-            width: 250px;
-            height: 350px;
-            margin: 0 1.5rem;
-            border-radius: 12px;
-            overflow: hidden;
-            transform: rotateY(20deg) scale(0.9);
-            transition: transform 0.5s ease;
-            cursor: pointer;
+            width: 250px; height: 350px; margin: 0 1.5rem; border-radius: 12px;
+            overflow: hidden; transform: rotateY(20deg) scale(0.9);
+            transition: transform 0.5s ease; cursor: pointer;
         }
-        .ticker-item:hover {
-            transform: rotateY(0) scale(1.05);
-        }
-        .ticker-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        @keyframes ticker {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
+        .ticker-item:hover { transform: rotateY(0) scale(1.05); }
+        .ticker-item img { width: 100%; height: 100%; object-fit: cover; }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* --- CONTROLES DA GALERIA E FILTROS --- */
-        .gallery-controls {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0 3rem 2rem; flex-wrap: wrap;
-        }
+        /* --- GALLERY --- */
+        .gallery-section { padding: 4rem 0; }
+        .gallery-controls { display: flex; justify-content: space-between; align-items: center; padding: 0 3rem 2rem; flex-wrap: wrap; }
         .primary-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; }
         .filter-btn, .filter-btn-more {
-            background: none; border: 1px solid #333; color: var(--secondary-color);
-            padding: 0.6rem 1.2rem; border-radius: 30px; cursor: pointer;
-            font-family: var(--font-body); font-size: 0.9rem;
-            transition: all 0.3s ease;
+            background: none; border: 1px solid #333; color: var(--secondary-color); padding: 0.6rem 1.2rem; border-radius: 30px;
+            cursor: pointer; font-family: var(--font-body); font-size: 0.9rem; transition: all 0.3s ease;
         }
-        .filter-btn:hover, .filter-btn-more:hover {
-            background-color: var(--surface-color); color: var(--primary-color);
-            border-color: #555;
-        }
-        .filter-btn.active {
-            background-color: var(--primary-color); color: var(--bg-color);
-            border-color: var(--primary-color); font-weight: 600;
-        }
-
-        /* --- MODAL DE FILTROS --- */
-        .filters-modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.9); z-index: 2000;
-            display: flex; justify-content: center; align-items: center;
-            opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
-        }
-        .filters-modal.open { opacity: 1; pointer-events: auto; }
-        .modal-content {
-            background-color: var(--bg-color); padding: 3rem 4rem; border-radius: 12px;
-            max-width: 800px; width: 90%; text-align: center;
-            position: relative; transform: scale(0.95); transition: transform 0.4s ease;
-        }
-        .filters-modal.open .modal-content { transform: scale(1); }
-        .modal-content h3 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 2rem; }
-        .close-btn {
-            position: absolute; top: 1rem; right: 1.5rem; background: none; border: none;
-            color: var(--secondary-color); font-size: 2rem; cursor: pointer; transition: color 0.3s ease;
-        }
-        .close-btn:hover { color: var(--primary-color); }
-        .secondary-filters-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
-
-        /* --- MASONRY GALLERY --- */
-        .gallery-section { padding: 4rem 3rem; }
-        .masonry-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            grid-auto-rows: 250px; gap: 1rem;
-        }
-        .grid-item {
-            overflow: hidden; border-radius: 8px;
-            transition: transform 0.5s ease, opacity 0.5s ease, width 0.5s ease, height 0.5s ease, padding 0.5s ease, margin 0.5s ease;
-        }
+        .filter-btn:hover, .filter-btn-more:hover { background-color: var(--surface-color); color: var(--primary-color); border-color: #555; }
+        .filter-btn.active { background-color: var(--primary-color); color: var(--bg-color); border-color: var(--primary-color); font-weight: 600; }
+        .masonry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-auto-rows: 250px; gap: 1rem; padding: 0 3rem; }
+        .grid-item { overflow: hidden; border-radius: 8px; transition: all 0.5s ease; }
         .grid-item.hidden { transform: scale(0.8); opacity: 0; width: 0; height: 0; padding: 0; margin: 0; }
-        .grid-item:nth-child(11n+2) { grid-row: span 2; }
-        .grid-item:nth-child(11n+5) { grid-row: span 2; }
-        .grid-item:nth-child(11n+9) { grid-row: span 2; }
+        .grid-item:nth-child(11n+2) { grid-row: span 2; } .grid-item:nth-child(11n+5) { grid-row: span 2; } .grid-item:nth-child(11n+9) { grid-row: span 2; }
         .grid-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
         .grid-item:hover img { transform: scale(1.05); }
+
+        /* --- NEW SECTIONS --- */
+        .about-section, .services-section, .testimonials-section, .contact-section { text-align: center; }
+        .about-content { display: flex; gap: 3rem; align-items: center; text-align: left; }
+        .about-image { width: 300px; height: 400px; object-fit: cover; border-radius: 12px; }
+        .about-text h3 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 1rem; }
+        .about-text p { color: var(--secondary-color); line-height: 1.8; }
         
-        /* --- Animação de Scroll --- */
-        [data-scroll] {
-            transition: opacity 1s cubic-bezier(0.5, 0, 0, 1), transform 1s cubic-bezier(0.5, 0, 0, 1);
-            opacity: 0; transform: translateY(50px);
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; text-align: left; }
+        .service-card { background-color: var(--surface-color); padding: 2rem; border-radius: 12px; }
+        .service-card i { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem; }
+        .service-card h4 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .service-card p { color: var(--secondary-color); }
+        
+        .testimonial-slider { max-width: 800px; margin: 0 auto; }
+        .testimonial-slide { padding: 2rem; }
+        .testimonial-slide p { font-size: 1.2rem; font-style: italic; line-height: 1.7; margin-bottom: 1rem; }
+        .testimonial-slide footer { font-weight: 700; }
+        
+        .cta-section { background-color: var(--surface-color); padding: 5rem 2rem; text-align: center; }
+        .cta-section h2 { font-size: 2.5rem; }
+        .cta-button {
+            display: inline-block; background-color: var(--primary-color); color: var(--bg-color);
+            padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none;
+            font-weight: 700; margin-top: 2rem; transition: transform 0.3s ease;
         }
+        .cta-button:hover { transform: scale(1.05); }
+        
+        .contact-form { max-width: 700px; margin: 0 auto; display: grid; gap: 1.5rem; text-align: left; }
+        .form-group { display: flex; flex-direction: column; }
+        .form-group input, .form-group textarea {
+            background-color: var(--surface-color); border: 1px solid #333; color: var(--text-color);
+            padding: 1rem; border-radius: 8px; font-family: var(--font-body);
+        }
+        .submit-button {
+            background-color: var(--primary-color); color: var(--bg-color); border: none; padding: 1rem;
+            border-radius: 8px; font-weight: 700; cursor: pointer; transition: background-color 0.3s ease;
+        }
+        .submit-button:hover { background-color: #ccc; }
+        
+        .main-footer {
+            background-color: #050505; padding: 4rem 2rem; text-align: center;
+        }
+        .footer-logo { font-family: var(--font-display); font-size: 2rem; margin-bottom: 1rem; }
+        .footer-socials a { color: var(--secondary-color); font-size: 1.5rem; margin: 0 1rem; transition: color 0.3s ease; }
+        .footer-socials a:hover { color: var(--primary-color); }
+        .footer-copy { margin-top: 2rem; color: #555; font-size: 0.9rem; }
+
+        /* --- MODAL --- */
+        .filters-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); z-index: 2000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
+        .filters-modal.open { opacity: 1; pointer-events: auto; }
+        .modal-content { background-color: var(--bg-color); padding: 3rem 4rem; border-radius: 12px; max-width: 800px; width: 90%; text-align: center; position: relative; transform: scale(0.95); transition: transform 0.4s ease; }
+        .filters-modal.open .modal-content { transform: scale(1); }
+        .modal-content h3 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 2rem; }
+        .close-btn { position: absolute; top: 1rem; right: 1.5rem; background: none; border: none; color: var(--secondary-color); font-size: 2rem; cursor: pointer; transition: color 0.3s ease; }
+        .close-btn:hover { color: var(--primary-color); }
+        .secondary-filters-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+        
+        [data-scroll] { transition: opacity 1s, transform 1s; opacity: 0; transform: translateY(50px); }
         [data-scroll="in"] { opacity: 1; transform: translateY(0); }
 
-        /* --- Responsividade --- */
         @media (max-width: 768px) {
-            .main-nav { padding: 1rem 1.5rem; position: absolute; }
+            .main-nav { padding: 1rem 1.5rem; }
             .nav-links { display: none; }
+            .about-content { flex-direction: column; }
             .ticker-section, .gallery-section { padding: 3rem 0; }
             .gallery-controls { padding: 0 1rem 2rem; flex-direction: column; gap: 1rem; }
         }
@@ -219,69 +177,51 @@
     <nav class="main-nav">
         <a href="#" class="nav-logo">JOÃO VIEGAS</a>
         <div class="nav-links">
-            <a href="#gallery">Galeria</a>
+            <a href="#gallery">Portfólio</a>
             <a href="#about">Sobre</a>
-            <a href="#contact">Contato</a>
+            <a href="#services">Serviços</a>
+            <a href="#contact" class="nav-cta-button">Vamos Conversar</a>
         </div>
     </nav>
-    
-    <section class="ticker-section">
-        <h2 class="section-title" data-scroll>Trabalhos Recentes</h2>
-        <div class="ticker-3d">
-            <div class="ticker-3d-wrapper">
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/4055273/pexels-photo-4055273.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Beauty Portrait"></div>
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/3775120/pexels-photo-3775120.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Male Portrait B&W"></div>
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/3762873/pexels-photo-3762873.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Female Portrait"></div>
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/2955375/pexels-photo-2955375.jpeg?auto=compress&cs=tinysrgb&w=800" alt="High Fashion"></div>
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/3221164/pexels-photo-3221164.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Fashion with Flowers"></div>
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/3754293/pexels-photo-3754293.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Surreal Fashion"></div>
-                
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/2080383/pexels-photo-2080383.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Textured Portrait"></div>
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/1496373/pexels-photo-1496373.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Movement"></div>
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/3785424/pexels-photo-3785424.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Artistic Beauty"></div>
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/1848565/pexels-photo-1848565.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Female Portrait 2"></div>
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/375880/pexels-photo-375880.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Conceptual"></div>
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/1113554/pexels-photo-1113554.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Close-up with Flower"></div>
-
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/4055273/pexels-photo-4055273.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Beauty Portrait"></div>
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/3775120/pexels-photo-3775120.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Male Portrait B&W"></div>
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/3762873/pexels-photo-3762873.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Female Portrait"></div>
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/2955375/pexels-photo-2955375.jpeg?auto=compress&cs=tinysrgb&w=800" alt="High Fashion"></div>
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/3221164/pexels-photo-3221164.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Fashion with Flowers"></div>
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/3754293/pexels-photo-3754293.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Surreal Fashion"></div>
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/2080383/pexels-photo-2080383.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Textured Portrait"></div>
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/1496373/pexels-photo-1496373.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Movement"></div>
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/3785424/pexels-photo-3785424.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Artistic Beauty"></div>
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/1848565/pexels-photo-1848565.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Female Portrait 2"></div>
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/375880/pexels-photo-375880.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Conceptual"></div>
-                <div class="ticker-item"><img src="https://images.pexels.com/photos/1113554/pexels-photo-1113554.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Close-up with Flower"></div>
-            </div>
-        </div>
-    </section>
     
     <section class="hero-slider swiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <img src="https://images.pexels.com/photos/3774612/pexels-photo-3774612.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="slide-image" alt="Retrato masculino">
-                <div class="slide-content">
-                    <h1>Retratos que Contam Histórias</h1>
-                </div>
+                <img src="https://images.pexels.com/photos/3774612/pexels-photo-3774612.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="slide-image" alt="Retrato masculino expressivo">
+                <div class="slide-content"><h1>Retratos que Contam Histórias</h1></div>
             </div>
             <div class="swiper-slide">
-                <img src="https://images.pexels.com/photos/3763323/pexels-photo-3763323.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="slide-image" alt="Modelo em pose de moda">
-                <div class="slide-content">
-                    <h1>A Essência da Moda em um Clique</h1>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                 <img src="https://images.pexels.com/photos/4041133/pexels-photo-4041133.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="slide-image" alt="Flor em close-up">
-                <div class="slide-content">
-                    <h1>Beleza nos Detalhes Mínimos</h1>
-                </div>
+                <img src="https://images.pexels.com/photos/3763323/pexels-photo-3763323.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="slide-image" alt="Modelo em pose de alta moda">
+                <div class="slide-content"><h1>A Essência da Moda em um Clique</h1></div>
             </div>
         </div>
     </section>
     
+    <section class="ticker-section">
+        <div class="ticker-3d">
+            <div class="ticker-3d-wrapper">
+                <div class="ticker-item"><img loading="lazy" src="https://images.pexels.com/photos/4055273/pexels-photo-4055273.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Beauty Portrait"></div>
+                <div class="ticker-item"><img loading="lazy" src="https://images.pexels.com/photos/3775120/pexels-photo-3775120.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Male Portrait B&W"></div>
+                <div class="ticker-item"><img loading="lazy" src="https://images.pexels.com/photos/3762873/pexels-photo-3762873.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Female Portrait"></div>
+                <div class="ticker-item"><img loading="lazy" src="https://images.pexels.com/photos/2955375/pexels-photo-2955375.jpeg?auto=compress&cs=tinysrgb&w=800" alt="High Fashion"></div>
+                <div class="ticker-item"><img loading="lazy" src="https://images.pexels.com/photos/3221164/pexels-photo-3221164.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Fashion with Flowers"></div>
+                <div class="ticker-item"><img loading="lazy" src="https://images.pexels.com/photos/3754293/pexels-photo-3754293.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Surreal Fashion"></div>
+                <div class="ticker-item"><img loading="lazy" src="https://images.pexels.com/photos/2080383/pexels-photo-2080383.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Textured Portrait"></div>
+                <div class="ticker-item"><img loading="lazy" src="https://images.pexels.com/photos/1496373/pexels-photo-1496373.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Movement"></div>
+                <div class="ticker-item"><img loading="lazy" src="https://images.pexels.com/photos/3785424/pexels-photo-3785424.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Artistic Beauty"></div>
+                <div class="ticker-item"><img loading="lazy" src="https://images.pexels.com/photos/1848565/pexels-photo-1848565.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Female Portrait 2"></div>
+                <div class="ticker-item"><img loading="lazy" src="https://images.pexels.com/photos/375880/pexels-photo-375880.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Conceptual"></div>
+                <div class="ticker-item"><img loading="lazy" src="https://images.pexels.com/photos/1113554/pexels-photo-1113554.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Close-up with Flower"></div>
+                <div class="ticker-item"><img loading="lazy" src="https://images.pexels.com/photos/4055273/pexels-photo-4055273.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Beauty Portrait"></div>
+                <div class="ticker-item"><img loading="lazy" src="https://images.pexels.com/photos/3775120/pexels-photo-3775120.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Male Portrait B&W"></div>
+                <div class="ticker-item"><img loading="lazy" src="https://images.pexels.com/photos/3762873/pexels-photo-3762873.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Female Portrait"></div>
+                <div class="ticker-item"><img loading="lazy" src="https://images.pexels.com/photos/2955375/pexels-photo-2955375.jpeg?auto=compress&cs=tinysrgb&w=800" alt="High Fashion"></div>
+                <div class="ticker-item"><img loading="lazy" src="https://images.pexels.com/photos/3221164/pexels-photo-3221164.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Fashion with Flowers"></div>
+                <div class="ticker-item"><img loading="lazy" src="https://images.pexels.com/photos/3754293/pexels-photo-3754293.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Surreal Fashion"></div>
+            </div>
+        </div>
+    </section>
+
     <section id="gallery" class="gallery-section">
          <div class="gallery-controls" data-scroll>
             <div class="primary-filters">
@@ -295,19 +235,111 @@
                 <button id="more-filters-btn" class="filter-btn-more">+ Mais Filtros</button>
             </div>
         </div>
-
-        <main class="masonry-grid" data-scroll>
-            <div class="grid-item" data-category="retratos monocromatico intimo"><img src="https://images.pexels.com/photos/2269872/pexels-photo-2269872.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Retrato monocromático"></div>
-            <div class="grid-item" data-category="beleza surreal estudio"><img src="https://images.pexels.com/photos/3812743/pexels-photo-3812743.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Beleza surreal"></div>
-            <div class="grid-item" data-category="editorial exteriores movimento"><img src="https://images.pexels.com/photos/1381556/pexels-photo-1381556.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Editorial em movimento"></div>
-            <div class="grid-item" data-category="editorial campanhas minimalista"><img src="https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Campanha minimalista"></div>
-            <div class="grid-item" data-category="beleza retratos fragmentos"><img src="https://images.pexels.com/photos/4046395/pexels-photo-4046395.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Fragmento de beleza"></div>
-            <div class="grid-item" data-category="autoral still-life analogico"><img src="https://images.pexels.com/photos/762041/pexels-photo-762041.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Still life autoral"></div>
-            <div class="grid-item" data-category="retratos exteriores"><img src="https://images.pexels.com/photos/1304647/pexels-photo-1304647.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Retrato exterior"></div>
-            <div class="grid-item" data-category="retratos intimo estudio"><img src="https://images.pexels.com/photos/935756/pexels-photo-935756.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Retrato íntimo em estúdio"></div>
-            <div class="grid-item" data-category="autoral editorial monocromatico"><img src="https://images.pexels.com/photos/3772509/pexels-photo-3772509.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Editorial autoral P&B"></div>
+        <main class="masonry-grid container" data-scroll>
+            <div class="grid-item" data-category="retratos monocromatico intimo"><img loading="lazy" src="https://images.pexels.com/photos/2269872/pexels-photo-2269872.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Retrato monocromático"></div>
+            <div class="grid-item" data-category="beleza surreal estudio"><img loading="lazy" src="https://images.pexels.com/photos/3812743/pexels-photo-3812743.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Beleza surreal"></div>
+            <div class="grid-item" data-category="editorial exteriores movimento"><img loading="lazy" src="https://images.pexels.com/photos/1381556/pexels-photo-1381556.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Editorial em movimento"></div>
+            <div class="grid-item" data-category="editorial campanhas minimalista"><img loading="lazy" src="https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Campanha minimalista"></div>
+            <div class="grid-item" data-category="beleza retratos fragmentos"><img loading="lazy" src="https://images.pexels.com/photos/4046395/pexels-photo-4046395.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Fragmento de beleza"></div>
+            <div class="grid-item" data-category="autoral still-life analogico"><img loading="lazy" src="https://images.pexels.com/photos/762041/pexels-photo-762041.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Still life autoral"></div>
+            <div class="grid-item" data-category="retratos exteriores"><img loading="lazy" src="https://images.pexels.com/photos/1304647/pexels-photo-1304647.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Retrato exterior"></div>
+            <div class="grid-item" data-category="retratos intimo estudio"><img loading="lazy" src="https://images.pexels.com/photos/935756/pexels-photo-935756.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Retrato íntimo em estúdio"></div>
+            <div class="grid-item" data-category="autoral editorial monocromatico"><img loading="lazy" src="https://images.pexels.com/photos/3772509/pexels-photo-3772509.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Editorial autoral P&B"></div>
         </main>
     </section>
+
+    <section id="about" class="section about-section">
+        <div class="container" data-scroll>
+            <div class="about-content">
+                <img loading="lazy" src="https://images.pexels.com/photos/3775131/pexels-photo-3775131.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Foto de João Viegas" class="about-image">
+                <div class="about-text">
+                    <h3>Uma Paixão por Contar Histórias Visuais</h3>
+                    <p>Olá, sou João Viegas. Minha jornada na fotografia começou com a fascinação pela luz e como ela esculpe emoções. Para mim, cada clique é mais do que uma imagem; é a captura de um momento, uma narrativa congelada no tempo. Com base em São Paulo, me especializo em moda e retratos, buscando sempre a autenticidade e a beleza em cada trabalho.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section services-section">
+        <div class="container" data-scroll>
+            <h2 class="section-title">O que eu ofereço</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fa-solid fa-camera-retro"></i>
+                    <h4>Editoriais de Moda</h4>
+                    <p>Criação de narrativas visuais para revistas e publicações online, desde o conceito até a pós-produção.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fa-solid fa-user-group"></i>
+                    <h4>Retratos e Headshots</h4>
+                    <p>Sessões personalizadas para artistas, profissionais e marcas pessoais que buscam imagens autênticas e impactantes.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fa-solid fa-gem"></i>
+                    <h4>Campanhas Publicitárias</h4>
+                    <p>Desenvolvimento de imagens de alta qualidade para campanhas de marketing, e-commerce e redes sociais.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section testimonials-section">
+        <div class="container" data-scroll>
+            <h2 class="section-title">O que meus clientes dizem</h2>
+            <div class="swiper testimonial-slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide testimonial-slide">
+                        <p>"Trabalhar com o João foi incrível. Ele entendeu perfeitamente o briefing e entregou um material que superou todas as nossas expectativas. Um verdadeiro artista."</p>
+                        <footer>- Ana Clara, Diretora de Arte da Vogue Brasil</footer>
+                    </div>
+                    <div class="swiper-slide testimonial-slide">
+                        <p>"As fotos para nossa campanha ficaram impecáveis. O profissionalismo e a criatividade do João foram essenciais para o sucesso do projeto."</p>
+                        <footer>- Marcos Lins, Gerente de Marketing da Marca X</footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container" data-scroll>
+            <h2 class="section-title">Vamos criar algo incrível juntos?</h2>
+            <a href="#contact" class="cta-button">Entre em Contato</a>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+        <div class="container" data-scroll>
+            <h2 class="section-title">Contato</h2>
+            <form action="#" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Seu Nome</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Seu E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensagem</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Enviar Mensagem</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-logo">JOÃO VIEGAS</div>
+            <div class="footer-socials">
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:contato@joaoviegas.com"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+            <p class="footer-copy">&copy; 2024 João Viegas. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
     <div id="filters-modal" class="filters-modal">
         <div class="modal-content">
@@ -331,15 +363,15 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // --- INICIALIZAÇÃO DO HERO SLIDER ---
-        const swiper = new Swiper('.hero-slider', {
-            loop: true,
-            effect: 'fade',
-            speed: 1500,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
+        // --- INICIALIZAÇÃO DOS SLIDERS ---
+        const heroSwiper = new Swiper('.hero-slider', {
+            loop: true, effect: 'fade', speed: 1500,
+            autoplay: { delay: 5000, disableOnInteraction: false },
+        });
+
+        const testimonialSwiper = new Swiper('.testimonial-slider', {
+            loop: true, slidesPerView: 1,
+            autoplay: { delay: 6000, disableOnInteraction: false },
         });
 
         // --- LÓGICA DO MODAL E FILTROS DA GALERIA ---
