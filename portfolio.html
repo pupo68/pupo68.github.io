@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>João Viegas | Fotógrafo de Moda e Retratos</title>
-    <meta name="description" content="Portfólio de João Viegas, fotógrafo especializado em editorial de moda, retratos e campanhas publicitárias. Disponível para projetos.">
+    <title>João Viegas - Fotógrafo</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
@@ -22,6 +22,7 @@
             --font-display: 'Syne', sans-serif;
             --font-body: 'Inter', sans-serif;
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
@@ -58,6 +59,19 @@
         }
         .nav-cta-button:hover { background-color: #ccc; }
 
+        /* --- 3D TICKER --- */
+        .ticker-section { padding: 6rem 0; overflow: hidden; padding-top: 10rem;}
+        .ticker-3d-wrapper { display: flex; width: max-content; animation: ticker 60s linear infinite; }
+        .ticker-3d { display: flex; transform-style: preserve-3d; perspective: 800px; }
+        .ticker-item {
+            width: 250px; height: 350px; margin: 0 1.5rem; border-radius: 12px;
+            overflow: hidden; transform: rotateY(20deg) scale(0.9);
+            transition: transform 0.5s ease; cursor: pointer;
+        }
+        .ticker-item:hover { transform: rotateY(0) scale(1.05); }
+        .ticker-item img { width: 100%; height: 100%; object-fit: cover; }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
         /* --- HERO SLIDER --- */
         .hero-slider { width: 100%; height: 100vh; position: relative; }
         .hero-slider .swiper-slide { display: flex; justify-content: center; align-items: center; color: white; overflow: hidden; }
@@ -73,19 +87,6 @@
         }
         .swiper-slide-active .slide-content h1 { transform: translateY(0); opacity: 1; }
         
-        /* --- 3D TICKER --- */
-        .ticker-section { padding: 6rem 0; overflow: hidden; }
-        .ticker-3d-wrapper { display: flex; width: max-content; animation: ticker 60s linear infinite; }
-        .ticker-3d { display: flex; transform-style: preserve-3d; perspective: 800px; }
-        .ticker-item {
-            width: 250px; height: 350px; margin: 0 1.5rem; border-radius: 12px;
-            overflow: hidden; transform: rotateY(20deg) scale(0.9);
-            transition: transform 0.5s ease; cursor: pointer;
-        }
-        .ticker-item:hover { transform: rotateY(0) scale(1.05); }
-        .ticker-item img { width: 100%; height: 100%; object-fit: cover; }
-        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
         /* --- GALLERY --- */
         .gallery-section { padding: 4rem 0; }
         .gallery-controls { display: flex; justify-content: space-between; align-items: center; padding: 0 3rem 2rem; flex-wrap: wrap; }
@@ -132,6 +133,7 @@
         
         .contact-form { max-width: 700px; margin: 0 auto; display: grid; gap: 1.5rem; text-align: left; }
         .form-group { display: flex; flex-direction: column; }
+        .form-group label { margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--secondary-color); }
         .form-group input, .form-group textarea {
             background-color: var(--surface-color); border: 1px solid #333; color: var(--text-color);
             padding: 1rem; border-radius: 8px; font-family: var(--font-body);
@@ -184,20 +186,8 @@
         </div>
     </nav>
     
-    <section class="hero-slider swiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="https://images.pexels.com/photos/3774612/pexels-photo-3774612.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="slide-image" alt="Retrato masculino expressivo">
-                <div class="slide-content"><h1>Retratos que Contam Histórias</h1></div>
-            </div>
-            <div class="swiper-slide">
-                <img src="https://images.pexels.com/photos/3763323/pexels-photo-3763323.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="slide-image" alt="Modelo em pose de alta moda">
-                <div class="slide-content"><h1>A Essência da Moda em um Clique</h1></div>
-            </div>
-        </div>
-    </section>
-    
     <section class="ticker-section">
+        <h2 class="section-title" data-scroll>Trabalhos Recentes</h2>
         <div class="ticker-3d">
             <div class="ticker-3d-wrapper">
                 <div class="ticker-item"><img loading="lazy" src="https://images.pexels.com/photos/4055273/pexels-photo-4055273.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Beauty Portrait"></div>
@@ -222,6 +212,29 @@
         </div>
     </section>
 
+    <section class="hero-slider swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="https://images.pexels.com/photos/3774612/pexels-photo-3774612.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="slide-image" alt="Retrato masculino">
+                <div class="slide-content">
+                    <h1>Retratos que Contam Histórias</h1>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="https://images.pexels.com/photos/3763323/pexels-photo-3763323.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="slide-image" alt="Modelo em pose de moda">
+                <div class="slide-content">
+                    <h1>A Essência da Moda em um Clique</h1>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                 <img src="https://images.pexels.com/photos/4041133/pexels-photo-4041133.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="slide-image" alt="Flor em close-up">
+                <div class="slide-content">
+                    <h1>Beleza nos Detalhes Mínimos</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <section id="gallery" class="gallery-section">
          <div class="gallery-controls" data-scroll>
             <div class="primary-filters">
