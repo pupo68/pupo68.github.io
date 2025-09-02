@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
@@ -24,9 +24,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         html { scroll-behavior: smooth; }
-
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
@@ -36,88 +34,50 @@
 
         /* --- NAVEGAÇÃO --- */
         .main-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 3rem;
-            z-index: 1000;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+            position: absolute; top: 0; left: 0; width: 100%;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.5rem 3rem; z-index: 1000;
         }
         .nav-logo {
-            font-family: var(--font-display);
-            font-weight: 800;
-            font-size: 1.5rem;
-            text-decoration: none;
-            color: var(--text-color);
+            font-family: var(--font-display); font-weight: 800; font-size: 1.5rem;
+            text-decoration: none; color: var(--text-color);
         }
         .nav-links a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            margin-left: 2rem;
-            font-weight: 400;
-            transition: color 0.3s ease;
+            color: var(--secondary-color); text-decoration: none; margin-left: 2rem;
+            font-weight: 400; transition: color 0.3s ease;
         }
         .nav-links a:hover { color: var(--primary-color); }
 
-        /* --- HERO SLIDER (Referência: Lucent & Flora) --- */
-        .hero-slider {
-            width: 100%;
-            height: 100vh;
-            position: relative;
+        /* --- HERO CAROUSEL --- */
+        .hero-carousel-section {
+            width: 100%; height: 80vh; display: flex; align-items: center;
+            padding-top: 5rem;
         }
-        .swiper-slide {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            overflow: hidden;
+        .hero-carousel { width: 100%; height: 100%; }
+        .hero-carousel .swiper-slide { border-radius: 12px; overflow: hidden; }
+        .hero-carousel .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-carousel .swiper-button-next, .hero-carousel .swiper-button-prev {
+            color: var(--primary-color); transition: transform 0.2s ease;
         }
-        .slide-image {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.6);
-            transform: scale(1.1);
-            transition: transform 8s ease-out;
-        }
-        .swiper-slide-active .slide-image {
-            transform: scale(1);
-        }
-        .slide-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            max-width: 800px;
-        }
-        .slide-content h1 {
-            font-family: var(--font-display);
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 800;
-            line-height: 1.1;
-            transform: translateY(30px);
-            opacity: 0;
-            transition: transform 0.8s ease, opacity 0.8s ease;
-            transition-delay: 0.3s;
-        }
-        .swiper-slide-active .slide-content h1 {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        /* --- 3D TICKER (Referência: Carrossel 3D) --- */
+        .hero-carousel .swiper-button-next:hover, .hero-carousel .swiper-button-prev:hover { transform: scale(1.2); }
+        .hero-carousel .swiper-pagination-bullet { background-color: rgba(255, 255, 255, 0.5); width: 10px; height: 10px; }
+        .hero-carousel .swiper-pagination-bullet-active { background-color: var(--primary-color); }
+        
+        /* --- 3D TICKER (NOVA SEÇÃO) --- */
         .ticker-section {
             padding: 6rem 0;
             overflow: hidden;
         }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
         .ticker-3d-wrapper {
             display: flex;
             width: max-content;
-            animation: ticker 40s linear infinite;
+            animation: ticker 45s linear infinite;
         }
         .ticker-3d {
             display: flex;
@@ -132,6 +92,7 @@
             overflow: hidden;
             transform: rotateY(20deg) scale(0.9);
             transition: transform 0.5s ease;
+            cursor: pointer;
         }
         .ticker-item:hover {
             transform: rotateY(0) scale(1.05);
@@ -146,61 +107,81 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* --- MASONRY GRID (Referência: Grade Dinâmica) --- */
-        .gallery-section {
-            padding: 4rem 3rem;
+        /* --- CONTROLES DA GALERIA E FILTROS --- */
+        .gallery-controls {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 3rem 2rem; flex-wrap: wrap;
         }
-        .section-title {
-            font-family: var(--font-display);
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            text-align: center;
+        .primary-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .filter-btn, .filter-btn-more {
+            background: none; border: 1px solid #333; color: var(--secondary-color);
+            padding: 0.6rem 1.2rem; border-radius: 30px; cursor: pointer;
+            font-family: var(--font-body); font-size: 0.9rem;
+            transition: all 0.3s ease;
         }
+        .filter-btn:hover, .filter-btn-more:hover {
+            background-color: var(--surface-color); color: var(--primary-color);
+            border-color: #555;
+        }
+        .filter-btn.active {
+            background-color: var(--primary-color); color: var(--bg-color);
+            border-color: var(--primary-color); font-weight: 600;
+        }
+
+        /* --- MODAL DE FILTROS --- */
+        .filters-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); z-index: 2000;
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+        }
+        .filters-modal.open { opacity: 1; pointer-events: auto; }
+        .modal-content {
+            background-color: var(--bg-color); padding: 3rem 4rem; border-radius: 12px;
+            max-width: 800px; width: 90%; text-align: center;
+            position: relative; transform: scale(0.95); transition: transform 0.4s ease;
+        }
+        .filters-modal.open .modal-content { transform: scale(1); }
+        .modal-content h3 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 2rem; }
+        .close-btn {
+            position: absolute; top: 1rem; right: 1.5rem; background: none; border: none;
+            color: var(--secondary-color); font-size: 2rem; cursor: pointer; transition: color 0.3s ease;
+        }
+        .close-btn:hover { color: var(--primary-color); }
+        .secondary-filters-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+
+        /* --- MASONRY GALLERY --- */
+        .gallery-section { padding: 4rem 3rem; }
         .masonry-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            grid-auto-rows: 250px;
-            gap: 1rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-auto-rows: 250px; gap: 1rem;
         }
         .grid-item {
-            overflow: hidden;
-            border-radius: 8px;
+            overflow: hidden; border-radius: 8px;
+            transition: transform 0.5s ease, opacity 0.5s ease, width 0.5s ease, height 0.5s ease, padding 0.5s ease, margin 0.5s ease;
         }
-        /* Ajuste manual para efeito masonry */
+        .grid-item.hidden { transform: scale(0.8); opacity: 0; width: 0; height: 0; padding: 0; margin: 0; }
         .grid-item:nth-child(11n+2) { grid-row: span 2; }
-        .grid-item:nth-child(11n+4) { grid-row: span 1; }
         .grid-item:nth-child(11n+5) { grid-row: span 2; }
         .grid-item:nth-child(11n+9) { grid-row: span 2; }
-
-        .grid-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-        .grid-item:hover img {
-            transform: scale(1.05);
-        }
+        .grid-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .grid-item:hover img { transform: scale(1.05); }
         
         /* --- Animação de Scroll --- */
         [data-scroll] {
             transition: opacity 1s cubic-bezier(0.5, 0, 0, 1), transform 1s cubic-bezier(0.5, 0, 0, 1);
-            opacity: 0;
-            transform: translateY(50px);
+            opacity: 0; transform: translateY(50px);
         }
-        [data-scroll="in"] {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        [data-scroll="in"] { opacity: 1; transform: translateY(0); }
 
         /* --- Responsividade --- */
         @media (max-width: 768px) {
-            .main-nav { padding: 1rem 1.5rem; }
-            .nav-links { display: none; } /* Simplificando, poderia adicionar um menu hamburguer */
-            .ticker-item { width: 200px; height: 280px; }
-            .gallery-section { padding: 3rem 1rem; }
+            .main-nav { padding: 1rem 1.5rem; position: absolute; }
+            .nav-links { display: none; }
+            .hero-carousel-section { height: 60vh; padding-top: 4rem; }
+            .ticker-section, .gallery-section { padding: 3rem 0; }
+            .gallery-controls { padding: 0 1rem 2rem; flex-direction: column; gap: 1rem; }
         }
-
     </style>
 </head>
 <body>
@@ -214,104 +195,149 @@
         </div>
     </nav>
 
-    <section class="hero-slider swiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" class="slide-image" alt="Retrato masculino">
-                <div class="slide-content">
-                    <h1>Retratos que Contam Histórias</h1>
-                </div>
+    <section class="hero-carousel-section">
+        <div class="swiper hero-carousel">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=1974" alt="Retrato masculino"></div>
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1542038784-56eD8DE0e332?auto=format&fit=crop&q=80&w=2070" alt="Modelo em pose de moda"></div>
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=1964" alt="Retrato feminino"></div>
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1534030347209-467a5b0aa3e6?auto=format&fit=crop&q=80&w=1974" alt="Modelo masculino de costas"></div>
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1581044777550-4cfa6ce67c43?auto=format&fit=crop&q=80&w=1972" alt="Close-up de beleza"></div>
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=1974" alt="Modelo com cachorro"></div>
             </div>
-            <div class="swiper-slide">
-                <img src="https://images.unsplash.com/photo-1542038784-56eD8DE0e332?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="slide-image" alt="Modelo em pose de moda">
-                <div class="slide-content">
-                    <h1>A Essência da Moda em um Clique</h1>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                 <img src="https://images.unsplash.com/photo-1581338834647-b5fb3160b788?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" class="slide-image" alt="Flor em close-up">
-                <div class="slide-content">
-                    <h1>Beleza nos Detalhes Mínimos</h1>
-                </div>
-            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
         </div>
     </section>
-
+    
     <section class="ticker-section">
+        <h2 class="section-title" data-scroll>Trabalhos Recentes</h2>
         <div class="ticker-3d">
             <div class="ticker-3d-wrapper">
-                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=1964" alt=""></div>
-                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1512485694743-9c9528b87462?auto=format&fit=crop&q=80&w=1974" alt=""></div>
-                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=1974" alt=""></div>
-                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1488161628813-04466f872d24?auto=format&fit=crop&q=80&w=2070" alt=""></div>
-                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=1961" alt=""></div>
-                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=1974" alt=""></div>
-                 <div class="ticker-item"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=1964" alt=""></div>
-                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1512485694743-9c9528b87462?auto=format&fit=crop&q=80&w=1974" alt=""></div>
-                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=1974" alt=""></div>
-                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1488161628813-04466f872d24?auto=format&fit=crop&q=80&w=2070" alt=""></div>
-                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=1961" alt=""></div>
-                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=1974" alt=""></div>
+                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=1964" alt="Retrato"></div>
+                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1512485694743-9c9528b87462?auto=format&fit=crop&q=80&w=1974" alt="Still Life"></div>
+                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=1974" alt="Editorial de moda"></div>
+                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1488161628813-04466f872d24?auto=format&fit=crop&q=80&w=2070" alt="Homem em exterior"></div>
+                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=1961" alt="Retrato beleza"></div>
+                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=1974" alt="Retrato casual"></div>
+                 <div class="ticker-item"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=1964" alt="Retrato"></div>
+                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1512485694743-9c9528b87462?auto=format&fit=crop&q=80&w=1974" alt="Still Life"></div>
+                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=1974" alt="Editorial de moda"></div>
+                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1488161628813-04466f872d24?auto=format&fit=crop&q=80&w=2070" alt="Homem em exterior"></div>
+                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=1961" alt="Retrato beleza"></div>
+                <div class="ticker-item"><img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=1974" alt="Retrato casual"></div>
             </div>
         </div>
     </section>
 
-    <section id="gallery" class="gallery-section" data-scroll>
-        <h2 class="section-title">Galeria</h2>
-        <div class="masonry-grid">
-            <div class="grid-item" data-scroll><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1974" alt=""></div>
-            <div class="grid-item" data-scroll><img src="https://images.unsplash.com/photo-1552882473-2cab7defa8e3?auto=format&fit=crop&q=80&w=1974" alt=""></div>
-            <div class="grid-item" data-scroll><img src="https://images.unsplash.com/photo-1617053315006-cf6661131255?auto=format&fit=crop&q=80&w=1974" alt=""></div>
-            <div class="grid-item" data-scroll><img src="https://images.unsplash.com/photo-1534030347209-467a5b0aa3e6?auto=format&fit=crop&q=80&w=1974" alt=""></div>
-            <div class="grid-item" data-scroll><img src="https://images.unsplash.com/photo-1581044777550-4cfa6ce67c43?auto=format&fit=crop&q=80&w=1972" alt=""></div>
-            <div class="grid-item" data-scroll><img src="https://images.unsplash.com/photo-1519058082700-08f0b5d91844?auto=format&fit=crop&q=80&w=2070" alt=""></div>
-            <div class="grid-item" data-scroll><img src="https://images.unsplash.com/photo-1548248197-425191c23861?auto=format&fit=crop&q=80&w=1974" alt=""></div>
-            <div class="grid-item" data-scroll><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=1976" alt=""></div>
-            <div class="grid-item" data-scroll><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=1974" alt=""></div>
+    <section id="gallery" class="gallery-section">
+         <div class="gallery-controls" data-scroll>
+            <div class="primary-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="retratos">Retratos</button>
+                <button class="filter-btn" data-filter="editorial">Editorial</button>
+                <button class="filter-btn" data-filter="beleza">Beleza</button>
+                <button class="filter-btn" data-filter="autoral">Autoral</button>
+            </div>
+            <div class="secondary-filters-trigger">
+                <button id="more-filters-btn" class="filter-btn-more">+ Mais Filtros</button>
+            </div>
         </div>
+
+        <main class="masonry-grid" data-scroll>
+            <div class="grid-item" data-category="retratos monocromatico intimo"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1974" alt="Retrato monocromático"></div>
+            <div class="grid-item" data-category="beleza surreal estudio"><img src="https://images.unsplash.com/photo-1552882473-2cab7defa8e3?auto=format&fit=crop&q=80&w=1974" alt="Beleza surreal"></div>
+            <div class="grid-item" data-category="editorial exteriores movimento"><img src="https://images.unsplash.com/photo-1617053315006-cf6661131255?auto=format&fit=crop&q=80&w=1974" alt="Editorial em movimento"></div>
+            <div class="grid-item" data-category="editorial campanhas minimalista"><img src="https://images.unsplash.com/photo-1534030347209-467a5b0aa3e6?auto=format&fit=crop&q=80&w=1974" alt="Campanha minimalista"></div>
+            <div class="grid-item" data-category="beleza retratos fragmentos"><img src="https://images.unsplash.com/photo-1581044777550-4cfa6ce67c43?auto=format&fit=crop&q=80&w=1972" alt="Fragmento de beleza"></div>
+            <div class="grid-item" data-category="autoral still-life analogico"><img src="https://images.unsplash.com/photo-1519058082700-08f0b5d91844?auto=format&fit=crop&q=80&w=2070" alt="Still life autoral"></div>
+            <div class="grid-item" data-category="retratos exteriores"><img src="https://images.unsplash.com/photo-1548248197-425191c23861?auto=format&fit=crop&q=80&w=1974" alt="Retrato exterior"></div>
+            <div class="grid-item" data-category="retratos intimo estudio"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=1976" alt="Retrato íntimo em estúdio"></div>
+            <div class="grid-item" data-category="autoral editorial monocromatico"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=1974" alt="Editorial autoral P&B"></div>
+        </main>
     </section>
+
+    <div id="filters-modal" class="filters-modal">
+        <div class="modal-content">
+            <button id="close-modal-btn" class="close-btn">&times;</button>
+            <h3>Todas as Categorias</h3>
+            <div class="secondary-filters-grid">
+                <button class="filter-btn" data-filter="campanhas">Campanhas</button>
+                <button class="filter-btn" data-filter="monocromatico">Monocromático</button>
+                <button class="filter-btn" data-filter="exteriores">Exteriores</button>
+                <button class="filter-btn" data-filter="estudio">Estúdio</button>
+                <button class="filter-btn" data-filter="analogico">Analógico</button>
+                <button class="filter-btn" data-filter="still-life">Still Life</button>
+                <button class="filter-btn" data-filter="movimento">Movimento</button>
+                <button class="filter-btn" data-filter="intimo">Íntimo</button>
+                <button class="filter-btn" data-filter="minimalista">Minimalista</button>
+                <button class="filter-btn" data-filter="surreal">Surreal</button>
+                <button class="filter-btn" data-filter="fragmentos">Fragmentos</button>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // --- INICIALIZAÇÃO DO HERO SLIDER ---
-        const swiper = new Swiper('.hero-slider', {
-            loop: true,
-            effect: 'fade',
-            speed: 1500,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
+        // --- INICIALIZAÇÃO DO HERO CAROUSEL ---
+        const swiper = new Swiper('.hero-carousel', {
+            loop: true, centeredSlides: true, slidesPerView: 1.5, spaceBetween: 20,
+            autoplay: { delay: 4000, disableOnInteraction: false },
+            pagination: { el: '.swiper-pagination', clickable: true },
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            breakpoints: {
+                768: { slidesPerView: 2.5, spaceBetween: 30 },
+                1200: { slidesPerView: 3.5, spaceBetween: 40 }
+            }
+        });
+
+        // --- LÓGICA DO MODAL E FILTROS DA GALERIA ---
+        const openModalBtn = document.getElementById('more-filters-btn');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const modal = document.getElementById('filters-modal');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const gridItems = document.querySelectorAll('.grid-item');
+
+        openModalBtn.addEventListener('click', () => modal.classList.add('open'));
+        closeModalBtn.addEventListener('click', () => modal.classList.remove('open'));
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.remove('open');
+        });
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filterValue = btn.getAttribute('data-filter');
+                gridItems.forEach(item => {
+                    const itemCategories = item.getAttribute('data-category');
+                    if (filterValue === 'all' || itemCategories.includes(filterValue)) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+                if(modal.classList.contains('open')) {
+                    modal.classList.remove('open');
+                }
+            });
         });
 
         // --- ANIMAÇÃO DE SCROLL ---
         const scrollElements = document.querySelectorAll('[data-scroll]');
-
         const elementInView = (el, dividend = 1) => {
             const elementTop = el.getBoundingClientRect().top;
-            return (
-                elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
-            );
+            return (elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend);
         };
-
-        const displayScrollElement = (element) => {
-            element.setAttribute('data-scroll', 'in');
-        };
-
+        const displayScrollElement = (element) => element.setAttribute('data-scroll', 'in');
         const handleScrollAnimation = () => {
             scrollElements.forEach((el) => {
-                if (elementInView(el, 1.25)) {
-                    displayScrollElement(el);
-                }
+                if (elementInView(el, 1.25)) displayScrollElement(el);
             });
         };
-        
-        window.addEventListener('scroll', () => {
-            handleScrollAnimation();
-        });
-        // Para carregar elementos já visíveis no load da página
+        window.addEventListener('scroll', handleScrollAnimation);
         handleScrollAnimation();
-
     </script>
 </body>
 </html>
