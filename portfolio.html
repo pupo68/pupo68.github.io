@@ -64,7 +64,7 @@
         .ticker-3d-wrapper { display: flex; width: max-content; animation: ticker 60s linear infinite; }
         .ticker-3d { display: flex; transform-style: preserve-3d; perspective: 800px; }
         .ticker-item {
-            width: 250px; height: 350px; margin: 0 1.5rem; border-radius: 12px;
+            width: 250px; height: 350px; margin: 0 0.5rem; border-radius: 0px;
             overflow: hidden; transform: rotateY(20deg) scale(0.9);
             transition: transform 0.5s ease; cursor: pointer;
         }
@@ -92,7 +92,7 @@
         .gallery-controls { display: flex; justify-content: space-between; align-items: center; padding: 0 3rem 2rem; flex-wrap: wrap; }
         .primary-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; }
         .filter-btn, .filter-btn-more {
-            background: none; border: 1px solid #333; color: var(--secondary-color); padding: 0.6rem 1.2rem; border-radius: 30px;
+            background: none; color: var(--secondary-color); padding: 0.6rem 1.2rem; border-radius: 30px;
             cursor: pointer; font-family: var(--font-body); font-size: 0.9rem; transition: all 0.3s ease;
         }
         .filter-btn:hover, .filter-btn-more:hover { background-color: var(--surface-color); color: var(--primary-color); border-color: #555; }
@@ -210,7 +210,6 @@
                 <div class="ticker-item"><img loading="lazy" src="https://images.pexels.com/photos/3754293/pexels-photo-3754293.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Surreal Fashion"></div>
             </div>
         </div>
-    </section>
 
     <section class="hero-slider swiper">
         <div class="swiper-wrapper">
