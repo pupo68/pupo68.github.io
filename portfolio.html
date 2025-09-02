@@ -48,22 +48,7 @@
         }
         .nav-links a:hover { color: var(--primary-color); }
 
-        /* --- HERO CAROUSEL --- */
-        .hero-carousel-section {
-            width: 100%; height: 80vh; display: flex; align-items: center;
-            padding-top: 5rem;
-        }
-        .hero-carousel { width: 100%; height: 100%; }
-        .hero-carousel .swiper-slide { border-radius: 12px; overflow: hidden; }
-        .hero-carousel .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
-        .hero-carousel .swiper-button-next, .hero-carousel .swiper-button-prev {
-            color: var(--primary-color); transition: transform 0.2s ease;
-        }
-        .hero-carousel .swiper-button-next:hover, .hero-carousel .swiper-button-prev:hover { transform: scale(1.2); }
-        .hero-carousel .swiper-pagination-bullet { background-color: rgba(255, 255, 255, 0.5); width: 10px; height: 10px; }
-        .hero-carousel .swiper-pagination-bullet-active { background-color: var(--primary-color); }
-        
-        /* --- 3D TICKER (NOVA SEÇÃO) --- */
+        /* --- 3D TICKER --- */
         .ticker-section {
             padding: 6rem 0;
             overflow: hidden;
@@ -105,6 +90,52 @@
         @keyframes ticker {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
+        }
+
+        /* --- HERO SLIDER (ESTILO ADICIONADO/CORRIGIDO) --- */
+        .hero-slider {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+        .hero-slider .swiper-slide { /* Seletor mais específico para não conflitar */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            overflow: hidden;
+        }
+        .slide-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6);
+            transform: scale(1.1);
+            transition: transform 8s ease-out;
+        }
+        .swiper-slide-active .slide-image {
+            transform: scale(1);
+        }
+        .slide-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 800px;
+        }
+        .slide-content h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            line-height: 1.1;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: transform 0.8s ease, opacity 0.8s ease;
+            transition-delay: 0.3s;
+        }
+        .swiper-slide-active .slide-content h1 {
+            transform: translateY(0);
+            opacity: 1;
         }
 
         /* --- CONTROLES DA GALERIA E FILTROS --- */
@@ -178,7 +209,6 @@
         @media (max-width: 768px) {
             .main-nav { padding: 1rem 1.5rem; position: absolute; }
             .nav-links { display: none; }
-            .hero-carousel-section { height: 60vh; padding-top: 4rem; }
             .ticker-section, .gallery-section { padding: 3rem 0; }
             .gallery-controls { padding: 0 1rem 2rem; flex-direction: column; gap: 1rem; }
         }
@@ -287,16 +317,15 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // --- INICIALIZAÇÃO DO HERO CAROUSEL ---
-        const swiper = new Swiper('.hero-carousel', {
-            loop: true, centeredSlides: true, slidesPerView: 1.5, spaceBetween: 20,
-            autoplay: { delay: 4000, disableOnInteraction: false },
-            pagination: { el: '.swiper-pagination', clickable: true },
-            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-            breakpoints: {
-                768: { slidesPerView: 2.5, spaceBetween: 30 },
-                1200: { slidesPerView: 3.5, spaceBetween: 40 }
-            }
+        // --- INICIALIZAÇÃO DO HERO SLIDER (CONFIGURAÇÃO CORRIGIDA) ---
+        const swiper = new Swiper('.hero-slider', {
+            loop: true,
+            effect: 'fade',
+            speed: 1500,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
         });
 
         // --- LÓGICA DO MODAL E FILTROS DA GALERIA ---
