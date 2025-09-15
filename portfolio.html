@@ -85,7 +85,7 @@
             line-height: 1.7;
         }
 
-        /* --- ABOUT SECTION (NOVA) --- */
+        /* --- ABOUT SECTION --- */
         .about-section { background-color: var(--surface-color); }
         .about-content { display: flex; align-items: center; gap: 4rem; }
         .about-image { width: 350px; height: 350px; object-fit: cover; border-radius: 50%; }
@@ -139,7 +139,7 @@
         .skill-item i { font-size: 3rem; color: var(--primary-color); }
         .skill-item p { margin-top: 1rem; font-weight: 500; }
         
-        /* --- CTA SECTION (NOVA) --- */
+        /* --- CTA SECTION --- */
         .cta-section { background-color: var(--surface-color); padding: 5rem 2rem; text-align: center; }
         .cta-button {
             display: inline-block; background-color: var(--primary-color); color: white;
@@ -154,6 +154,28 @@
         .footer-socials a { color: var(--secondary-color); font-size: 1.5rem; margin: 0 1rem; transition: color 0.3s ease; }
         .footer-socials a:hover { color: var(--primary-color); }
         .footer-copy { margin-top: 2rem; color: #555; }
+
+        /* --- RESPONSIVIDADE E ADAPTAÇÃO PARA MOBILE --- */
+        @media (max-width: 768px) {
+            .container { padding: 0 1.5rem; }
+            .section { padding: 4rem 0; }
+            .main-nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; } /* Oculta o menu principal em telas menores */
+            .nav-logo { font-size: 1.2rem; }
+            
+            .hero-section { min-height: 70vh; }
+            .hero-content p { font-size: 1.1rem; }
+
+            .about-content { flex-direction: column; text-align: center; }
+            .about-image { width: 250px; height: 250px; }
+            .about-text { text-align: center; }
+
+            .projects-controls { flex-wrap: wrap; justify-content: center; }
+
+            .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+
+            .cta-section h2 { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
@@ -313,6 +335,7 @@
         let isDeleting = false;
 
         function type() {
+            if (!typingTextElement) return; // Garante que o elemento exista
             const currentRole = roles[roleIndex];
             if (isDeleting) {
                 typingTextElement.textContent = currentRole.substring(0, charIndex - 1);
@@ -355,6 +378,10 @@
                 });
             });
         });
+        
+        // --- ANIMAÇÃO DE SCROLL (Placeholder se necessário) ---
+        // Seu código de animação de scroll anterior foi removido pois não havia elementos com `data-scroll`
+        // Se precisar, pode adicionar aqui
     </script>
 </body>
 </html>
