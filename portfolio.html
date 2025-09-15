@@ -74,6 +74,7 @@
             font-size: clamp(3rem, 7vw, 5.5rem);
             font-weight: 800;
             line-height: 1.1;
+            word-wrap: break-word; /* Garante a quebra de linha */
         }
         .hero-content .typing-text { color: var(--primary-color); border-right: 4px solid var(--primary-color); padding-right: 8px; animation: blink 0.7s infinite; }
         @keyframes blink { 50% { border-color: transparent; } }
@@ -93,7 +94,7 @@
         .about-text p { color: var(--secondary-color); line-height: 1.8; margin-bottom: 1rem; }
 
         /* --- PROJECTS --- */
-        .projects-controls { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; }
+        .projects-controls { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem; }
         .filter-btn {
             background: none; border: 1px solid var(--border-color); color: var(--secondary-color);
             padding: 0.6rem 1.2rem; border-radius: 8px; cursor: pointer;
@@ -159,22 +160,33 @@
         @media (max-width: 768px) {
             .container { padding: 0 1.5rem; }
             .section { padding: 4rem 0; }
+            .section-title { margin-bottom: 2rem; }
+
             .main-nav { padding: 1rem 1.5rem; }
-            .nav-links { display: none; } /* Oculta o menu principal em telas menores */
+            .nav-links { display: none; }
             .nav-logo { font-size: 1.2rem; }
             
-            .hero-section { min-height: 70vh; }
+            .hero-section { min-height: 80vh; }
+            /* Ajuste crucial para o título no mobile */
+            .hero-content h1 { font-size: clamp(2.5rem, 12vw, 3.5rem); } 
             .hero-content p { font-size: 1.1rem; }
 
-            .about-content { flex-direction: column; text-align: center; }
+            .about-content { flex-direction: column; text-align: center; gap: 2rem; }
             .about-image { width: 250px; height: 250px; }
             .about-text { text-align: center; }
 
-            .projects-controls { flex-wrap: wrap; justify-content: center; }
-
-            .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            .skills-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; }
+            .skill-item { padding: 1.5rem; }
+            .skill-item i { font-size: 2.5rem; }
 
             .cta-section h2 { font-size: 2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 1rem; }
+            .hero-content p { max-width: 100%; }
+            .projects-grid { grid-template-columns: 1fr; } /* Força uma coluna em telas muito pequenas */
+            .skills-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -379,9 +391,9 @@
             });
         });
         
-        // --- ANIMAÇÃO DE SCROLL (Placeholder se necessário) ---
-        // Seu código de animação de scroll anterior foi removido pois não havia elementos com `data-scroll`
-        // Se precisar, pode adicionar aqui
+        // --- ANIMAÇÃO DE SCROLL ---
+        // O código anterior para animação de scroll foi removido pois os elementos `[data-scroll]` não existiam.
+        // Se precisar, pode adicionar um novo sistema de animação de scroll aqui.
     </script>
 </body>
 </html>
