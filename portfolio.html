@@ -15,7 +15,7 @@
         :root {
             --bg-color: #0A0A0A;
             --surface-color: #1A1A1A;
-            --primary-color: #3B82F6;
+            --primary-color: #3B82F6; 
             --text-color: #E5E7EB;
             --secondary-color: #9CA3AF;
             --border-color: #374151;
@@ -25,10 +25,20 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            background-color: var(--bg-color);
+            /* O fundo principal agora é transparente para o canvas aparecer */
+            background-color: transparent;
             color: var(--text-color);
             font-family: var(--font-body);
             overflow-x: hidden;
+        }
+        /* Canvas para o Efeito Matrix */
+        #matrixCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Coloca o canvas atrás de todo o conteúdo */
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
         .section { padding: 8rem 0; }
@@ -68,7 +78,6 @@
             display: flex;
             align-items: center;
             text-align: center;
-            padding: 80px 0; /* Garante espaço para o header fixo */
         }
         .hero-content h1 {
             font-family: var(--font-display);
@@ -94,7 +103,7 @@
         .about-text p { color: var(--secondary-color); line-height: 1.8; margin-bottom: 1rem; }
 
         /* --- PROJECTS --- */
-        .projects-controls { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem; }
+        .projects-controls { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; }
         .filter-btn {
             background: none; border: 1px solid var(--border-color); color: var(--secondary-color);
             padding: 0.6rem 1.2rem; border-radius: 8px; cursor: pointer;
@@ -135,7 +144,7 @@
         .video-card h4 { font-size: 1.2rem; }
 
         /* --- SKILLS SECTION --- */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 2rem; text-align: center; }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; text-align: center; }
         .skill-item { background-color: var(--surface-color); padding: 2rem; border-radius: 12px; }
         .skill-item i { font-size: 3rem; color: var(--primary-color); }
         .skill-item p { margin-top: 1rem; font-weight: 500; }
@@ -156,18 +165,16 @@
         .footer-socials a:hover { color: var(--primary-color); }
         .footer-copy { margin-top: 2rem; color: #555; }
 
-        /* --- RESPONSIVIDADE E ADAPTAÇÃO PARA MOBILE --- */
+        /* --- RESPONSIVIDADE --- */
         @media (max-width: 768px) {
             .container { padding: 0 1.5rem; }
             .section { padding: 4rem 0; }
-            .section-title { margin-bottom: 2rem; }
             .main-nav { padding: 1rem 1.5rem; }
             .nav-links { display: none; }
             .nav-logo { font-size: 1.2rem; }
             
             .hero-section { min-height: 80vh; }
-            /* AJUSTE CORRIGIDO PARA O TÍTULO EM TELAS MENORES */
-            .hero-content h1 { font-size: clamp(2.5rem, 12vw, 3.5rem); } 
+            .hero-content h1 { font-size: clamp(2.5rem, 12vw, 3.5rem); }
             .hero-content p { font-size: 1.1rem; }
 
             .about-content { flex-direction: column; text-align: center; gap: 2rem; }
@@ -190,6 +197,8 @@
     </style>
 </head>
 <body>
+    
+    <canvas id="matrixCanvas"></canvas>
 
     <nav class="main-nav">
         <a href="#" class="nav-logo">AGPB.DEV</a>
@@ -270,21 +279,6 @@
                         <div class="project-links">
                             <a href="#" target="_blank" class="project-link"><i class="fab fa-github"></i> Código</a>
                         </div>
-                        <div class="project-card" data-category="web">
-    <img loading="lazy" src="images/thumbnail-fotografia.jpg" alt="Site de Serviço de Fotografia">
-    <div class="project-card-content">
-        <h3>Site para Serviço de Fotografia</h3>
-        <p>Página promocional para um serviço de fotografia, com design focado em um carrossel de imagens interativo para exibir os eventos.</p>
-        <div class="project-tags">
-            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
-        </div>
-        <div class="project-links">
-            <a href="#" class="project-link"><i class="fa-solid fa-globe"></i> Ver ao Vivo</a>
-            <a href="#" target="_blank" class="project-link"><i class="fab fa-github"></i> Código</a>
-        </div>
-    </div>
-</div>
-
                     </div>
                 </div>
             </div>
@@ -404,7 +398,46 @@
                 });
             });
         });
-        
+
+        // --- EFEITO MATRIX ---
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const alphabet = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const rainDrops = [];
+
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+
+        const drawMatrix = () => {
+            ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#3B82F6'; // Cor do efeito matrix
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+
+        setInterval(drawMatrix, 35);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
     </script>
 </body>
 </html>
