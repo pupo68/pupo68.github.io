@@ -8,69 +8,68 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&family=Syne:wght@700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         :root {
-            --bg-color: #0A0A0A;
-            --surface-color: #1A1A1A;
-            --primary-color: #3B82F6; 
+            /* PALETA DE CORES ATUALIZADA */
+            --bg-color: #000000;
+            --surface-color: #0A0A0A;
+            --primary-color: #00FF41; /* Verde Matrix */
             --text-color: #E5E7EB;
             --secondary-color: #9CA3AF;
-            --border-color: #374151;
-            --font-display: 'Syne', sans-serif;
+            --border-color: #222;
+            --font-display: 'Roboto Mono', monospace; /* Fonte Temática */
             --font-body: 'Inter', sans-serif;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            /* O fundo principal agora é transparente para o canvas aparecer */
-            background-color: transparent;
+            background-color: var(--bg-color);
             color: var(--text-color);
             font-family: var(--font-body);
             overflow-x: hidden;
         }
-        /* Canvas para o Efeito Matrix */
         #matrixCanvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Coloca o canvas atrás de todo o conteúdo */
+            z-index: -1;
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        .section { padding: 8rem 0; }
+        .section { padding: 8rem 0; position: relative; z-index: 10; }
         .section-title {
             font-family: var(--font-display);
             font-size: clamp(2.5rem, 5vw, 3.5rem);
             margin-bottom: 4rem;
             text-align: center;
-            font-weight: 800;
+            font-weight: 700;
         }
         /* --- NAVEGAÇÃO --- */
         .main-nav {
             position: fixed; top: 0; left: 0; width: 100%;
             display: flex; justify-content: space-between; align-items: center;
             padding: 1.5rem 3rem; z-index: 1000;
-            background-color: rgba(16, 16, 16, 0.8);
+            background-color: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
         }
         .nav-logo {
-            font-family: var(--font-display); font-weight: 800; font-size: 1.5rem;
+            font-family: var(--font-display); font-weight: 700; font-size: 1.5rem;
             text-decoration: none; color: var(--text-color);
         }
         .nav-links { display: flex; align-items: center; gap: 2rem; }
         .nav-links a { color: var(--secondary-color); text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
         .nav-links a:hover { color: var(--primary-color); }
         .nav-cta-button {
-            background-color: var(--primary-color); color: white;
-            padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 500;
+            background-color: var(--primary-color); color: #000;
+            padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 700;
             transition: background-color 0.3s ease;
         }
-        .nav-cta-button:hover { background-color: #2563EB; }
+        .nav-cta-button:hover { background-color: #00b32d; }
 
         /* --- HERO SECTION --- */
         .hero-section {
@@ -82,11 +81,36 @@
         .hero-content h1 {
             font-family: var(--font-display);
             font-size: clamp(3rem, 7vw, 5.5rem);
-            font-weight: 800;
+            font-weight: 700;
             line-height: 1.1;
+            /* Efeito Glitch */
+            animation: glitch 3s linear infinite;
         }
         .hero-content .typing-text { color: var(--primary-color); border-right: 4px solid var(--primary-color); padding-right: 8px; animation: blink 0.7s infinite; }
+        
+        /* --- ANIMAÇÃO GLITCH --- */
+        @keyframes glitch {
+            2%, 64% { transform: translate(2px, 0) skew(0deg); }
+            4%, 60% { transform: translate(-2px, 0) skew(0deg); }
+            62% { transform: translate(0, 0) skew(5deg); }
+        }
+        .hero-content h1:before, .hero-content h1:after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+            overflow: hidden;
+            top: 0;
+        }
+        .hero-content h1:before { left: 2px; text-shadow: -2px 0 #ff00c1; animation: glitch-anim-1 2s linear infinite reverse; }
+        .hero-content h1:after { left: -2px; text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1; animation: glitch-anim-2 2s linear infinite reverse; }
+
+        @keyframes glitch-anim-1 { 0%, 100% { clip: rect(132px, 9999px, 99px, 0); } 5%, 8% { clip: rect(75px, 9999px, 131px, 0); } }
+        @keyframes glitch-anim-2 { 0%, 100% { clip: rect(44px, 9999px, 119px, 0); } 3%, 10% { clip: rect(123px, 9999px, 59px, 0); } }
         @keyframes blink { 50% { border-color: transparent; } }
+
         .hero-content p {
             font-size: 1.25rem;
             color: var(--secondary-color);
@@ -94,117 +118,26 @@
             margin: 2rem auto 0;
             line-height: 1.7;
         }
-
-        /* --- ABOUT SECTION --- */
-        .about-section { background-color: var(--surface-color); }
-        .about-content { display: flex; align-items: center; gap: 4rem; }
-        .about-image { width: 350px; height: 350px; object-fit: cover; border-radius: 50%; }
-        .about-text h3 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 1rem; }
-        .about-text p { color: var(--secondary-color); line-height: 1.8; margin-bottom: 1rem; }
-
-        /* --- PROJECTS --- */
-        .projects-controls { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; }
-        .filter-btn {
-            background: none; border: 1px solid var(--border-color); color: var(--secondary-color);
-            padding: 0.6rem 1.2rem; border-radius: 8px; cursor: pointer;
-            font-size: 0.9rem; transition: all 0.3s ease;
-        }
-        .filter-btn:hover { background-color: var(--surface-color); color: var(--primary-color); }
-        .filter-btn.active { background-color: var(--primary-color); color: white; border-color: var(--primary-color); }
         
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
-        .project-card {
-            background-color: var(--surface-color); border: 1px solid var(--border-color);
-            border-radius: 12px; overflow: hidden;
-            display: flex; flex-direction: column;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        [data-scroll] {
+            transition: opacity 1s cubic-bezier(0.5, 0, 0, 1), transform 1s cubic-bezier(0.5, 0, 0, 1);
+            opacity: 0;
+            transform: translateY(50px);
         }
-        .project-card:hover { transform: translateY(-8px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
-        .project-card img { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--border-color); }
-        .project-card-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
-        .project-card-content h3 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.5rem; }
-        .project-card-content p { color: var(--secondary-color); margin-bottom: 1rem; flex-grow: 1; }
-        .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
-        .tag { background-color: #2a2a2a; color: var(--secondary-color); font-size: 0.75rem; padding: 0.3rem 0.6rem; border-radius: 5px; }
-        .project-links { display: flex; gap: 1rem; margin-top: auto; }
-        .project-link {
-            display: flex; align-items: center; gap: 0.5rem;
-            text-decoration: none; color: var(--text-color);
-            padding: 0.6rem 1rem; border-radius: 8px;
-            background-color: #252525; transition: background-color 0.3s ease;
-        }
-        .project-link:hover { background-color: var(--primary-color); color: white; }
-
-        /* --- TUTORIALS SECTION --- */
-        .tutorials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .video-card { text-align: center; }
-        .video-thumbnail { background-color: var(--surface-color); border-radius: 12px; height: 180px; display: flex; justify-content: center; align-items: center; margin-bottom: 1rem; transition: transform 0.3s ease; }
-        .video-thumbnail:hover { transform: scale(1.05); }
-        .video-thumbnail i { font-size: 3rem; color: var(--primary-color); }
-        .video-card h4 { font-size: 1.2rem; }
-
-        /* --- SKILLS SECTION --- */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; text-align: center; }
-        .skill-item { background-color: var(--surface-color); padding: 2rem; border-radius: 12px; }
-        .skill-item i { font-size: 3rem; color: var(--primary-color); }
-        .skill-item p { margin-top: 1rem; font-weight: 500; }
-        
-        /* --- CTA SECTION --- */
-        .cta-section { background-color: var(--surface-color); padding: 5rem 2rem; text-align: center; }
-        .cta-button {
-            display: inline-block; background-color: var(--primary-color); color: white;
-            padding: 1rem 2.5rem; border-radius: 8px; text-decoration: none;
-            font-weight: 700; margin-top: 2rem; transition: transform 0.3s ease;
-            font-size: 1.1rem;
-        }
-        .cta-button:hover { transform: scale(1.05); background-color: #2563EB; }
-        
-        /* --- FOOTER --- */
-        .main-footer { background-color: #050505; padding: 4rem 2rem; text-align: center; }
-        .footer-socials a { color: var(--secondary-color); font-size: 1.5rem; margin: 0 1rem; transition: color 0.3s ease; }
-        .footer-socials a:hover { color: var(--primary-color); }
-        .footer-copy { margin-top: 2rem; color: #555; }
-
-        /* --- RESPONSIVIDADE --- */
-        @media (max-width: 768px) {
-            .container { padding: 0 1.5rem; }
-            .section { padding: 4rem 0; }
-            .main-nav { padding: 1rem 1.5rem; }
-            .nav-links { display: none; }
-            .nav-logo { font-size: 1.2rem; }
-            
-            .hero-section { min-height: 80vh; }
-            .hero-content h1 { font-size: clamp(2.5rem, 12vw, 3.5rem); }
-            .hero-content p { font-size: 1.1rem; }
-
-            .about-content { flex-direction: column; text-align: center; gap: 2rem; }
-            .about-image { width: 250px; height: 250px; }
-            .about-text { text-align: center; }
-
-            .skills-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; }
-            .skill-item { padding: 1.5rem; }
-            .skill-item i { font-size: 2.5rem; }
-
-            .cta-section h2 { font-size: 2rem; }
-        }
-
-        @media (max-width: 480px) {
-            .container { padding: 0 1rem; }
-            .hero-content p { max-width: 100%; }
-            .projects-grid { grid-template-columns: 1fr; }
-            .skills-grid { grid-template-columns: repeat(2, 1fr); }
+        [data-scroll="in"] {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    
+
     <canvas id="matrixCanvas"></canvas>
 
     <nav class="main-nav">
         <a href="#" class="nav-logo">AGPB.DEV</a>
         <div class="nav-links">
             <a href="#projects">Projetos</a>
-            <a href="#tutorials">Tutoriais</a>
             <a href="#skills">Habilidades</a>
             <a href="index.html" class="nav-cta-button">Meu Currículo</a>
         </div>
@@ -212,141 +145,83 @@
     
     <section class="section hero-section">
         <div class="container hero-content">
-            <h1><span id="typing-text" class="typing-text"></span></h1>
-            <p>Unindo visão de negócios e competência técnica para criar soluções que resolvem problemas complexos, desde aplicações web até automação e análise de dados com Python.</p>
+            <h1 data-text="Alcileudo Gustavo"><span id="typing-text" class="typing-text"></span></h1>
+            <p data-scroll>Unindo visão de negócios e competência técnica para criar soluções que resolvem problemas complexos, desde aplicações web até automação e análise de dados com Python.</p>
         </div>
     </section>
 
-    <section id="about" class="section about-section">
-        <div class="container">
-            <div class="about-content">
-                <img loading="lazy" src="https://images.pexels.com/photos/3775131/pexels-photo-3775131.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Foto de Alcileudo Gustavo" class="about-image">
-                <div class="about-text">
-                    <h3>De Administração à Tecnologia: Uma Jornada de Resiliência</h3>
-                    <p>Minha trajetória é marcada por um espírito empreendedor e uma transição de carreira estratégica. Com uma base sólida em Administração, desenvolvi uma forte visão de negócio que hoje aplico na tecnologia para criar soluções com impacto real.</p>
-                    <p>Financiando meus próprios objetivos, migrei para a área de Análise e Desenvolvimento de Sistemas, onde me especializei em análise de dados, automação de processos e desenvolvimento de software. Busco constantemente desafios para aprender, contribuir e crescer.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="section">
-        <div class="container">
-            <h2 class="section-title">Meus Projetos</h2>
-            <div class="projects-controls">
-                <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="web">Web</button>
-                <button class="filter-btn" data-filter="data">Data Science</button>
-                <button class="filter-btn" data-filter="scripts">Scripts</button>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card" data-category="web">
-                    <img loading="lazy" src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Plataforma de Serviços">
-                    <div class="project-card-content">
-                        <h3>Plataforma de Serviços</h3>
-                        <p>Solução full-stack para gerenciamento de prestadores de serviço, com banco de dados relacional e interface de usuário.</p>
-                        <div class="project-tags">
-                            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">PHP</span><span class="tag">MySQL</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fa-solid fa-globe"></i> Ver ao Vivo</a>
-                            <a href="https://github.com/pupo68/plataforma-prestadores-servicos" target="_blank" class="project-link"><i class="fab fa-github"></i> Código</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card" data-category="data">
-                    <img loading="lazy" src="https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Dashboard de Vendas">
-                    <div class="project-card-content">
-                        <h3>Dashboard de Vendas</h3>
-                        <p>Dashboard interativo para análise de performance de vendas, utilizando dados para gerar insights de negócio.</p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Dash</span><span class="tag">Power BI</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fa-solid fa-globe"></i> Ver ao Vivo</a>
-                            <a href="#" target="_blank" class="project-link"><i class="fab fa-github"></i> Código</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card" data-category="scripts">
-                    <img loading="lazy" src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Automação de Processos">
-                    <div class="project-card-content">
-                        <h3>Automação de Processos</h3>
-                        <p>Script em Python para automação de tarefas de ETL, extraindo, transformando e carregando dados entre sistemas.</p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span><span class="tag">ETL</span><span class="tag">SQL</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank" class="project-link"><i class="fab fa-github"></i> Código</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="tutorials" class="section">
-        <div class="container">
-            <h2 class="section-title">Tutoriais & Conteúdo</h2>
-            <div class="tutorials-grid">
-                <div class="video-card">
-                    <a href="#" target="_blank" class="video-thumbnail">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <h4>Como criar seu primeiro Dashboard</h4>
-                </div>
-                <div class="video-card">
-                    <a href="#" target="_blank" class="video-thumbnail">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <h4>Automatizando tarefas com Python</h4>
-                </div>
-                <div class="video-card">
-                    <a href="#" target="_blank" class="video-thumbnail">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <h4>Dicas de SQL para iniciantes</h4>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="skills" class="section">
-        <div class="container">
-            <h2 class="section-title">Habilidades Técnicas</h2>
-            <div class="skills-grid">
-                <div class="skill-item"><i class="fab fa-python"></i><p>Python</p></div>
-                <div class="skill-item"><i class="fa-solid fa-database"></i><p>SQL</p></div>
-                <div class="skill-item"><i class="fa-solid fa-file-excel"></i><p>Excel Avançado</p></div>
-                <div class="skill-item"><i class="fa-solid fa-chart-simple"></i><p>Power BI</p></div>
-                <div class="skill-item"><i class="fab fa-html5"></i><p>HTML & CSS</p></div>
-                <div class="skill-item"><i class="fab fa-js"></i><p>JavaScript</p></div>
-                <div class="skill-item"><i class="fab fa-git-alt"></i><p>Git & GitHub</p></div>
-                <div class="skill-item"><i class="fab fa-docker"></i><p>Docker</p></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section cta-section">
-        <div class="container">
-            <h2 class="section-title">Vamos Trabalhar Juntos?</h2>
-            <p style="color: var(--secondary-color); max-width: 600px; margin: -2rem auto 0;">Estou sempre em busca de novos desafios e oportunidades para colaborar em projetos inovadores. Se você tem uma ideia, vamos conversar.</p>
-            <a href="mailto:gustavopupo49@gmail.com" class="cta-button">Enviar um E-mail</a>
-        </div>
-    </section>
-    
     <footer class="main-footer">
-        <div class="container">
-            <div class="footer-socials">
-                <a href="https://www.linkedin.com/in/alcileudo-bezerra" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/pupo68" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="mailto:gustavopupo49@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-            </div>
-            <p class="footer-copy">&copy; 2024 Alcileudo Gustavo Pupo Bezerra. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+        </footer>
 
     <script>
+        // --- EFEITO MATRIX INTERATIVO ---
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const alphabet = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        const fontSize = 16;
+        const columns = Math.floor(canvas.width / fontSize);
+        const rainDrops = [];
+        const mouse = { x: null, y: null, radius: 100 };
+
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+        
+        window.addEventListener('mousemove', (event) => {
+            mouse.x = event.x;
+            mouse.y = event.y;
+        });
+
+        const drawMatrix = () => {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                const x = i * fontSize;
+                const y = rainDrops[i] * fontSize;
+                
+                // Interatividade com o mouse
+                let dx = mouse.x - x;
+                let dy = mouse.y - y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < mouse.radius) {
+                    ctx.fillStyle = '#ffffff'; // Cor brilhante perto do mouse
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = '#ffffff';
+                } else {
+                    ctx.fillStyle = '#00FF41'; // Cor padrão verde
+                    ctx.shadowBlur = 0;
+                }
+                
+                ctx.fillText(text, x, y);
+                
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+
+        setInterval(drawMatrix, 33);
+        
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            // Recalcula colunas ao redimensionar
+            const newColumns = Math.floor(canvas.width / fontSize);
+            // Preenche ou remove colunas conforme necessário
+            while(rainDrops.length < newColumns) rainDrops.push(1);
+            while(rainDrops.length > newColumns) rainDrops.pop();
+        });
+
         // --- EFEITO DE DIGITAÇÃO ---
         const typingTextElement = document.getElementById('typing-text');
         const roles = ["Desenvolvedor de Software", "Analista de Dados"];
@@ -377,67 +252,20 @@
         }
         document.addEventListener('DOMContentLoaded', type);
 
-        // --- LÓGICA DE FILTROS ---
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const filterValue = btn.getAttribute('data-filter');
-
-                projectCards.forEach(card => {
-                    const cardCategory = card.getAttribute('data-category');
-                    card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-                    if (filterValue === 'all' || cardCategory === filterValue) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // --- EFEITO MATRIX ---
-        const canvas = document.getElementById('matrixCanvas');
-        const ctx = canvas.getContext('2d');
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const alphabet = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        const fontSize = 16;
-        const columns = canvas.width / fontSize;
-        const rainDrops = [];
-
-        for (let x = 0; x < columns; x++) {
-            rainDrops[x] = 1;
-        }
-
-        const drawMatrix = () => {
-            ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#3B82F6'; // Cor do efeito matrix
-            ctx.font = fontSize + 'px monospace';
-
-            for (let i = 0; i < rainDrops.length; i++) {
-                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-
-                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    rainDrops[i] = 0;
-                }
-                rainDrops[i]++;
-            }
+        // --- ANIMAÇÃO DE SCROLL ---
+        const scrollElements = document.querySelectorAll('[data-scroll]');
+        const elementInView = (el, dividend = 1) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend);
         };
-
-        setInterval(drawMatrix, 35);
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
+        const displayScrollElement = (element) => element.setAttribute('data-scroll', 'in');
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 1.25)) displayScrollElement(el);
+            });
+        };
+        window.addEventListener('scroll', handleScrollAnimation);
+        handleScrollAnimation();
     </script>
 </body>
 </html>
