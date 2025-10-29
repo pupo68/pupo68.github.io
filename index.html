@@ -7,149 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f4f7f6;
-            color: #2c3e50;
-        }
-        /* Layout principal */
-        .cv-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        /* Sidebar */
-        .cv-sidebar {
-            background-color: #2c3e50;
-            color: white;
-        }
-        .cv-sidebar h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        .cv-sidebar a {
-            display: flex;
-            align-items: center;
-            padding: 0.75rem 1rem;
-            margin-bottom: 0.5rem;
-            border-radius: 0.375rem;
-            transition: background-color 0.3s, transform 0.2s;
-            text-decoration: none;
-            color: white;
-            font-weight: 600;
-        }
-        .cv-sidebar a:hover {
-            background-color: #34495e;
-            transform: translateX(5px);
-        }
-        .cv-sidebar a i {
-            margin-right: 0.75rem;
-            width: 1.25rem;
-            text-align: center;
-        }
-        /* Conteúdo do currículo */
-        .cv-content {
-            background-color: #f4f7f6;
-            padding: 2rem;
-        }
-        .cv-section {
-            background-color: white;
-            padding: 25px 30px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .cv-section:last-child {
-            margin-bottom: 0;
-        }
-        .cv-section h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        .cv-section h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #34495e;
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
-        }
-        .cv-section p, .cv-section li {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #555;
-        }
-        .cv-section ul {
-            list-style-type: disc;
-            padding-left: 20px;
-            margin-top: 0.5rem;
-        }
-        .cv-section .date-location {
-            font-style: italic;
-            color: #7f8c8d;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-        .cv-section .skills-list span {
-            display: inline-block;
-            background-color: #e0e7ff;
-            color: #4338ca;
-            padding: 0.25rem 0.75rem;
-            margin: 0.25rem;
-            border-radius: 0.375rem;
-            font-size: 0.9rem;
-            vertical-align: middle;
-        }
-        .cv-header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-        }
-        .cv-header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        .cv-header p {
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
-        }
-        .cv-header a {
-            color: #ecf0f1;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .cv-header a:hover {
-            color: #3498db;
-        }
-        /* Versão para Impressão */
-        @media print {
-            body { background-color: white !important; margin: 0; padding: 0; font-size: 10pt; }
-            .cv-container { box-shadow: none !important; border-radius: 0 !important; max-width: 100% !important; flex-direction: column !important; }
-            .cv-sidebar { display: none !important; }
-            .cv-content { padding: 0 !important; }
-            .cv-header { background-color: #2c3e50 !important; color: white !important; -webkit-print-color-adjust: exact; color-adjust: exact; padding: 20px !important; border-radius: 0 !important; }
-            .cv-header h1 { font-size: 1.8rem !important; }
-            .cv-header p { font-size: 0.9rem !important; }
-            .cv-header a { color: #ecf0f1 !important; }
-            .cv-section { box-shadow: none !important; margin-bottom: 10px !important; padding: 15px !important; border: 1px solid #eee !important; border-radius: 0 !important; }
-            .cv-section h2 { font-size: 1.3rem !important; color: #2c3e50 !important; border-bottom: 1px solid #3498db !important; -webkit-print-color-adjust: exact; color-adjust: exact; padding-bottom: 0.3rem !important; margin-bottom: 0.8rem !important; }
-            .cv-section h3 { font-size: 1.1rem !important; }
-            .cv-section p, .cv-section li { font-size: 0.9rem !important; line-height: 1.5 !important; }
-            .cv-section .skills-list span { display: inline-block !important; background-color: transparent !important; color: #333333 !important; padding: 2px 5px !important; margin: 2px 3px !important; border: 1px solid #aaaaaa !important; border-radius: 0.25rem !important; font-size: 0.85rem !important; box-shadow: none !important; vertical-align: middle !important; }
-            .cv-section div.skills-list p { line-height: 1.8 !important; margin-bottom: 0.5rem !important; }
-            footer { display: none; }
-        }
-    </style>
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
     <div class="cv-container flex flex-col lg:flex-row">
@@ -157,15 +15,16 @@
             <nav>
                 <h2 class="hidden lg:block">Navegação</h2>
                 <ul class="flex lg:flex-col justify-center gap-2 flex-wrap">
+                    <li><a href="#destaques" class="group"><i class="fas fa-star group-hover:text-cyan-400"></i> Destaques</a></li>
                     <li><a href="#resumo" class="group"><i class="fas fa-user-circle group-hover:text-cyan-400"></i> Resumo</a></li>
-                    <li><a href="#formacao" class="group"><i class="fas fa-graduation-cap group-hover:text-cyan-400"></i> Formação</a></li>
                     <li><a href="#experiencia" class="group"><i class="fas fa-briefcase group-hover:text-cyan-400"></i> Experiência</a></li>
                     <li><a href="#projetos" class="group"><i class="fas fa-project-diagram group-hover:text-cyan-400"></i> Projetos</a></li>
                     <li><a href="#habilidades" class="group"><i class="fas fa-cogs group-hover:text-cyan-400"></i> Habilidades</a></li>
+                    <li><a href="#formacao" class="group"><i class="fas fa-graduation-cap group-hover:text-cyan-400"></i> Formação</a></li>
                     <li><a href="#competencias" class="group"><i class="fas fa-users-cog group-hover:text-cyan-400"></i> Competências</a></li>
                     <li><a href="#idiomas" class="group"><i class="fas fa-language group-hover:text-cyan-400"></i> Idiomas</a></li>
-                    <li><a href="portfolio.html" class="group"><i class="fas fa-camera-retro group-hover:text-cyan-400"></i> Portfólio</a></li>
-                    <li><a href="interativo.html" class="group"><i class="fas fa-camera-retro group-hover:text-cyan-400"></i> Interativo</a></li>
+                    <li><a href="portfolio.html" class="group"><i class="fas fa-code group-hover:text-cyan-400"></i> Portfólio</a></li>
+                    <li><a href="interativo.html" class="group"><i class="fas fa-laptop-code group-hover:text-cyan-400"></i> Projetos Interativos</a></li>
                 </ul>
             </nav>
         </aside>
@@ -180,9 +39,106 @@
                 <p><i class="fab fa-github mr-2"></i><a href="https://github.com/pupo68" target="_blank" rel="noopener noreferrer">github.com/pupo68</a></p>
             </header>
 
+            <section id="destaques" class="cv-section">
+                <h2><i class="fas fa-star mr-2"></i>DESTAQUES</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h3 class="text-blue-600"><i class="fas fa-code mr-2"></i>Desenvolvimento Full Stack</h3>
+                        <p>Experiência com Python/Django, PostgreSQL e JavaScript, desenvolvendo sistemas empresariais complexos.</p>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h3 class="text-green-600"><i class="fas fa-chart-line mr-2"></i>Análise de Dados</h3>
+                        <p>Habilidade em ETL, Power BI e automação de processos para tomada de decisão baseada em dados.</p>
+                    </div>
+                    <div class="bg-purple-50 p-4 rounded-lg">
+                        <h3 class="text-purple-600"><i class="fas fa-sitemap mr-2"></i>Arquitetura de Software</h3>
+                        <p>Participação em decisões arquiteturais e implementação de melhorias técnicas em sistemas complexos.</p>
+                    </div>
+                    <div class="bg-orange-50 p-4 rounded-lg">
+                        <h3 class="text-orange-600"><i class="fas fa-users mr-2"></i>Metodologias Ágeis</h3>
+                        <p>Experiência com cerimônias ágeis, gestão de demandas e comunicação efetiva com stakeholders.</p>
+                    </div>
+                </div>
+            </section>
+
             <section id="resumo" class="cv-section">
                 <h2><i class="fas fa-rocket mr-2"></i>RESUMO</h2>
-                <p>Estudante de Análise e Desenvolvimento de Sistemas com um perfil híbrido que une visão de negócios e competência técnica. Minha jornada é marcada pela resiliência e por um espírito empreendedor, demonstrado pela iniciativa de financiar meus objetivos e pela transição de carreira da Administração para a Tecnologia. Possuo uma base sólida em **análise de dados**, **automação de processos** e **desenvolvimento de software**, com forte interesse em aplicar essas habilidades para resolver problemas complexos, especialmente no setor financeiro e em projetos de inovação com Inteligência Artificial. Busco oportunidades desafiadoras onde eu possa aprender, contribuir e crescer profissionalmente.</p>
+                <p>Estudante de Análise e Desenvolvimento de Sistemas com um perfil híbrido que une visão de negócios e competência técnica. Minha jornada é marcada pela resiliência e por um espírito empreendedor, demonstrado pela iniciativa de financiar meus objetivos e pela transição de carreira da Administração para a Tecnologia. Possuo uma base sólida em análise de dados, automação de processos e desenvolvimento de software, com forte interesse em aplicar essas habilidades para resolver problemas complexos, especialmente no setor financeiro e em projetos de inovação com Inteligência Artificial. Busco oportunidades desafiadoras onde eu possa aprender, contribuir e crescer profissionalmente.</p>
+            </section>
+
+            <section id="experiencia" class="cv-section">
+                <h2><i class="fas fa-briefcase mr-2"></i>EXPERIÊNCIA PROFISSIONAL</h2>
+                <div>
+                    <h3>Desenvolvedor Full Stack (Estágio) - Bullla</h3>
+                    <p class="date-location">Atual</p>
+                    <ul>
+                        <li>Desenvolvimento full-stack de sistema integrado para cálculo de rebates e comissões utilizando Python/Django e PostgreSQL, com foco em documentação e geração de artefatos.</li>
+                        <li>Implementação de interface web responsiva e jornada interativa de faturamento utilizando JavaScript, HTML e CSS, incluindo geração dinâmica de PDFs.</li>
+                        <li>Participação ativa em decisões arquiteturais e sugestão de melhorias técnicas implementadas, como o desenvolvimento do módulo de geração de PDFs e fluxo interativo de faturas.</li>
+                        <li>Desenvolvimento de módulos para gestão de clientes, convênios, contratos, faturamento e sistema de parceiros.</li>
+                        <li>Containerização da aplicação com Docker e versionamento com Git, seguindo boas práticas de desenvolvimento.</li>
+                        <li>Participação em cerimônias ágeis semanais, incluindo reviews e plannings, utilizando Trello para gestão de demandas.</li>
+                        <li>Trabalho próximo com stakeholders para coleta de requisitos e implementação de regras de negócio complexas.</li>
+                        <li>Implementação de métricas de performance para monitoramento de tempo de processamento e precisão de cálculos.</li>
+                    </ul>
+                </div>
+                <div class="mt-6">
+                    <h3>Estagiário de Automação de Processos e Gerenciamento de Dados</h3>
+                    <p class="date-location">Grupo Moura — Jan/2025 - Mar/2025</p>
+                    <ul>
+                        <li>Análise de processos operacionais para identificar oportunidades de melhoria e automação.</li>
+                        <li>Desenvolvimento de scripts em Python para automação de tarefas, extração e manipulação de dados.</li>
+                        <li>Realização do processo de ETL utilizando Power Query para preparar dados para análise.</li>
+                        <li>Criação de dashboards e relatórios interativos em Power BI.</li>
+                        <li>Colaboração com equipes multidisciplinares na interface entre negócio e tecnologia.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="projetos" class="cv-section">
+                <h2><i class="fas fa-project-diagram mr-2"></i>PROJETOS E INICIATIVAS</h2>
+                <div class="mb-6">
+                    <h3>Sistema de Gestão de Rebates - Bullla</h3>
+                    <p>Desenvolvimento full-stack de uma aplicação empresarial complexa para gestão de rebates, utilizando Python/Django e PostgreSQL. O sistema inclui módulos de gestão de clientes, convênios, contratos, faturamento e cálculos automatizados de rebate, demonstrando capacidade de implementar regras de negócio complexas e trabalhar com tecnologias modernas.</p>
+                    <ul class="mt-2">
+                        <li>Tecnologias: Python, Django, PostgreSQL, Docker, Git</li>
+                        <li>Metodologias: Desenvolvimento Ágil, Versionamento de Código</li>
+                        <li>Soft Skills: Trabalho em Equipe, Comunicação com Stakeholders</li>
+                    </ul>
+                </div>
+                <div class="mb-6">
+                    <h3>Plataforma Web para Gerenciamento de Serviços</h3>
+                    <p>Solução full-stack com foco em demonstrar capacidades técnicas e boas práticas de desenvolvimento.</p>
+                    <ul class="mt-2">
+                        <li>Stack: PHP, MySQL, HTML/CSS, JavaScript</li>
+                        <li>Práticas: Git, MVC, Desenvolvimento Web Responsivo</li>
+                    </ul>
+                    <p class="mt-1"><strong>Link (GitHub):</strong> <a href="https://github.com/pupo68/plataforma-prestadores-servicos" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">github.com/pupo68/plataforma-prestadores-servicos</a></p>
+                </div>
+                <div class="mt-4">
+                    <h3>Iniciativa Empreendedora</h3>
+                    <p>Projeto pessoal de importação e comercialização que demonstra habilidades em gestão, planejamento e execução. A iniciativa envolveu:</p>
+                    <ul class="mt-2">
+                        <li>Análise de mercado e viabilidade financeira</li>
+                        <li>Gestão de logística internacional</li>
+                        <li>Desenvolvimento de estratégias de vendas</li>
+                    </ul>
+                </div>
+                <div class="mt-6 text-center">
+                    <p class="text-lg font-semibold text-blue-600">Para ver mais detalhes sobre meus projetos e processo de desenvolvimento, visite meu <a href="portfolio.html" class="underline hover:text-blue-800">Portfólio Interativo</a>.</p>
+                </div>
+            </section>
+
+            <section id="habilidades" class="cv-section">
+                <h2><i class="fas fa-cogs mr-2"></i>HABILIDADES TÉCNICAS</h2>
+                <div class="skills-list">
+                    <p><strong>Desenvolvimento Backend:</strong> <span>Python</span> <span>Django</span> <span>SQL</span> <span>PostgreSQL</span> <span>APIs REST</span></p>
+                    <p><strong>Desenvolvimento Frontend:</strong> <span>HTML5</span> <span>CSS3</span> <span>JavaScript</span> <span>UI/UX Básico</span></p>
+                    <p><strong>DevOps & Ferramentas:</strong> <span>Docker</span> <span>Git</span> <span>GitHub</span> <span>VS Code</span></p>
+                    <p><strong>Análise de Dados:</strong> <span>Power BI</span> <span>ETL</span> <span>Power Query</span> <span>Excel Avançado</span></p>
+                    <p><strong>Metodologias:</strong> <span>Metodologias Ágeis</span> <span>Versionamento</span> <span>Clean Code</span></p>
+                    <p><strong>Em Desenvolvimento:</strong> <span>Testes Unitários</span> <span>CI/CD</span> <span>Django REST Framework</span> <span>Automação com IA</span></p>
+                </div>
             </section>
 
             <section id="formacao" class="cv-section">
@@ -192,48 +148,11 @@
                     <p class="date-location">Pontifícia Universidade Católica do Paraná (PUCPR) — Cursando (4º Semestre), Conclusão Prevista: Junho de 2026</p>
                 </div>
                 <div class="mt-4">
-                    <h3>Bacharelado em Administração (Incompleto)</h3>
+                    <h3>Bacharelado em Administração</h3>
                     <p class="date-location">Pontifícia Universidade Católica do Paraná (PUCPR) — Período: Janeiro de 2023 - Dezembro de 2023</p>
-                    <p><em>Experiência que proporcionou uma base em visão de negócio, processos e comunicação com stakeholders.</em></p>
-                </div>
-            </section>
-            
-            <section id="experiencia" class="cv-section">
-                <h2><i class="fas fa-briefcase mr-2"></i>EXPERIÊNCIA PROFISSIONAL</h2>
-                <div>
-                    <h3>Estagiário de Automação de Processos e Gerenciamento de Dados</h3>
-                    <p class="date-location">Grupo Moura — Jan/2025 - Mar/2025</p>
                     <ul>
-                        <li>Análise de processos operacionais para identificar oportunidades de melhoria e automação.</li>
-                        <li>Desenvolvimento de scripts em Python para automação de tarefas, extração e manipulação de dados.</li>
-                        <li>Realização do processo de ETL (Extração, Transformação e Carga) utilizando Power Query para preparar dados para análise.</li>
-                        <li>Criação de dashboards e relatórios interativos em Power BI para monitoramento de indicadores e suporte à tomada de decisão.</li>
-                        <li>Colaboração com equipes multidisciplinares, atuando na interface entre as áreas de negócio e tecnologia.</li>
+                        <li>Experiência que proporcionou uma base em visão de negócio, processos e comunicação com stakeholders.</li>
                     </ul>
-                </div>
-            </section>
-
-            <section id="projetos" class="cv-section">
-                <h2><i class="fas fa-project-diagram mr-2"></i>PROJETOS E INICIATIVAS</h2>
-                <div>
-                    <h3>Plataforma Web para Gerenciamento de Serviços</h3>
-                    <p>Desenvolvi uma solução full-stack que demonstra a aplicação de lógica de programação para criar um sistema funcional. O projeto envolveu a modelagem e estruturação de um banco de dados relacional (MySQL), a manipulação de dados com SQL, a construção do back-end (PHP) e o desenvolvimento de uma interface de usuário (HTML, CSS, JavaScript). Todo o processo foi versionado com Git, reforçando boas práticas de desenvolvimento.</p>
-                     <p class="mt-1"><strong>Link (GitHub):</strong> <a href="https://github.com/pupo68/plataforma-prestadores-servicos" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">github.com/pupo68/plataforma-prestadores-servicos</a></p>
-                </div>
-                <div class="mt-4">
-                    <h3>Iniciativa Empreendedora</h3>
-                    <p>Idealizei e executei um projeto pessoal de importação e comercialização de produtos dos Estados Unidos para o mercado local no Acre. A iniciativa envolveu planejamento logístico, análise de custos, estratégias de venda e gestão financeira, com o objetivo de financiar minha transição profissional e mudança para São Paulo. Este projeto demonstra na prática habilidades de planejamento, execução orientada a metas e resiliência.</p>
-                </div>
-            </section>
-
-            <section id="habilidades" class="cv-section">
-                <h2><i class="fas fa-cogs mr-2"></i>HABILIDADES TÉCNICAS</h2>
-                <div class="skills-list">
-                    <p><strong>Linguagens de Programação:</strong> <span>Python</span> <span>SQL</span> <span>PHP</span> <span>JavaScript</span> <span>HTML & CSS</span></p>
-                    <p><strong>Análise de Dados e BI:</strong> <span>Power BI</span> <span>Excel (Avançado)</span> <span>ETL (Power Query)</span> <span>Modelagem de Dados</span></p>
-                    <p><strong>Bancos de Dados:</strong> <span>MySQL</span> <span>Postgres (Básico)</span></p>
-                    <p><strong>Ferramentas e Metodologias:</strong> <span>Git / GitHub</span> <span>APIs (REST)</span> <span>Metodologia Ágil (Familiaridade)</span> <span>Docker (Básico)</span></p>
-                    <p><strong>Áreas de Interesse e Estudo:</strong> <span>Machine Learning</span> <span>Inteligência Artificial Generativa</span> <span>Cloud (AWS)</span></p>
                 </div>
             </section>
 
@@ -262,8 +181,6 @@
         </main>
     </div>
 
-    <script>
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-    </script>
+    <script src="js/index.js"></script>
 </body>
 </html>

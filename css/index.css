@@ -1,0 +1,141 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f4f7f6;
+    color: #2c3e50;
+}
+/* Layout principal */
+.cv-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+/* Sidebar */
+.cv-sidebar {
+    background-color: #2c3e50;
+    color: white;
+}
+.cv-sidebar h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.cv-sidebar a {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.375rem;
+    transition: background-color 0.3s, transform 0.2s;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+}
+.cv-sidebar a:hover {
+    background-color: #34495e;
+    transform: translateX(5px);
+}
+.cv-sidebar a i {
+    margin-right: 0.75rem;
+    width: 1.25rem;
+    text-align: center;
+}
+/* Conteúdo do currículo */
+.cv-content {
+    background-color: #f4f7f6;
+    padding: 2rem;
+}
+.cv-section {
+    background-color: white;
+    padding: 25px 30px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.cv-section:last-child {
+    margin-bottom: 0;
+}
+.cv-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+.cv-section h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #34495e;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+.cv-section p, .cv-section li {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+.cv-section ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 0.5rem;
+}
+.cv-section .date-location {
+    font-style: italic;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+.cv-section .skills-list span {
+    display: inline-block;
+    background-color: #e0e7ff;
+    color: #4338ca;
+    padding: 0.25rem 0.75rem;
+    margin: 0.25rem;
+    border-radius: 0.375rem;
+    font-size: 0.9rem;
+    vertical-align: middle;
+}
+.cv-header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+.cv-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+.cv-header p {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+.cv-header a {
+    color: #ecf0f1;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.cv-header a:hover {
+    color: #3498db;
+}
+/* Versão para Impressão */
+@media print {
+    body { background-color: white !important; margin: 0; padding: 0; font-size: 10pt; }
+    .cv-container { box-shadow: none !important; border-radius: 0 !important; max-width: 100% !important; flex-direction: column !important; }
+    .cv-sidebar { display: none !important; }
+    .cv-content { padding: 0 !important; }
+    .cv-header { background-color: #2c3e50 !important; color: white !important; -webkit-print-color-adjust: exact; color-adjust: exact; padding: 20px !important; border-radius: 0 !important; }
+    .cv-header h1 { font-size: 1.8rem !important; }
+    .cv-header p { font-size: 0.9rem !important; }
+    .cv-header a { color: #ecf0f1 !important; }
+    .cv-section { box-shadow: none !important; margin-bottom: 10px !important; padding: 15px !important; border: 1px solid #eee !important; border-radius: 0 !important; }
+    .cv-section h2 { font-size: 1.3rem !important; color: #2c3e50 !important; border-bottom: 1px solid #3498db !important; -webkit-print-color-adjust: exact; color-adjust: exact; padding-bottom: 0.3rem !important; margin-bottom: 0.8rem !important; }
+    .cv-section h3 { font-size: 1.1rem !important; }
+    .cv-section p, .cv-section li { font-size: 0.9rem !important; line-height: 1.5 !important; }
+    .cv-section .skills-list span { display: inline-block !important; background-color: transparent !important; color: #333333 !important; padding: 2px 5px !important; margin: 2px 3px !important; border: 1px solid #aaaaaa !important; border-radius: 0.25rem !important; font-size: 0.85rem !important; box-shadow: none !important; vertical-align: middle !important; }
+    .cv-section div.skills-list p { line-height: 1.8 !important; margin-bottom: 0.5rem !important; }
+    footer { display: none; }
+}
