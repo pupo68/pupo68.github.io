@@ -123,19 +123,73 @@ body {
 }
 /* Versão para Impressão */
 @media print {
-    body { background-color: white !important; margin: 0; padding: 0; font-size: 10pt; }
-    .cv-container { box-shadow: none !important; border-radius: 0 !important; max-width: 100% !important; flex-direction: column !important; }
+    @page {
+        margin: 8mm 10mm;
+        size: A4;
+    }
+    body { 
+        background-color: white !important; 
+        margin: 0; 
+        padding: 0; 
+        font-size: 9pt; 
+        line-height: 1.35;
+    }
+    .cv-container { 
+        box-shadow: none !important; 
+        border-radius: 0 !important; 
+        max-width: 100% !important; 
+        flex-direction: column !important; 
+    }
     .cv-sidebar { display: none !important; }
     .cv-content { padding: 0 !important; }
-    .cv-header { background-color: #2c3e50 !important; color: white !important; -webkit-print-color-adjust: exact; color-adjust: exact; padding: 20px !important; border-radius: 0 !important; }
-    .cv-header h1 { font-size: 1.8rem !important; }
-    .cv-header p { font-size: 0.9rem !important; }
+    .cv-header { 
+        background-color: #2c3e50 !important; 
+        color: white !important; 
+        -webkit-print-color-adjust: exact; 
+        print-color-adjust: exact; 
+        padding: 14px 18px !important; 
+        border-radius: 4px !important; 
+        margin-bottom: 8px !important; 
+    }
+    .cv-header h1 { font-size: 1.5rem !important; margin-bottom: 3px !important; }
+    .cv-header p { font-size: 8pt !important; margin-bottom: 2px !important; }
     .cv-header a { color: #ecf0f1 !important; }
-    .cv-section { box-shadow: none !important; margin-bottom: 10px !important; padding: 15px !important; border: 1px solid #eee !important; border-radius: 0 !important; }
-    .cv-section h2 { font-size: 1.3rem !important; color: #2c3e50 !important; border-bottom: 1px solid #3498db !important; -webkit-print-color-adjust: exact; color-adjust: exact; padding-bottom: 0.3rem !important; margin-bottom: 0.8rem !important; }
-    .cv-section h3 { font-size: 1.1rem !important; }
-    .cv-section p, .cv-section li { font-size: 0.9rem !important; line-height: 1.5 !important; }
-    .cv-section .skills-list span { display: inline-block !important; background-color: transparent !important; color: #333333 !important; padding: 2px 5px !important; margin: 2px 3px !important; border: 1px solid #aaaaaa !important; border-radius: 0.25rem !important; font-size: 0.85rem !important; box-shadow: none !important; vertical-align: middle !important; }
-    .cv-section div.skills-list p { line-height: 1.8 !important; margin-bottom: 0.5rem !important; }
-    footer { display: none; }
+    .cv-section { 
+        box-shadow: none !important; 
+        margin-bottom: 8px !important; 
+        padding: 10px 14px !important; 
+        border: 1px solid #e2e8f0 !important; 
+        border-radius: 4px !important; 
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    .cv-section h2 { 
+        font-size: 1.1rem !important; 
+        color: #1e293b !important; 
+        border-bottom: 2px solid #3b82f6 !important; 
+        -webkit-print-color-adjust: exact; 
+        print-color-adjust: exact; 
+        padding-bottom: 0.2rem !important; 
+        margin-bottom: 0.4rem !important; 
+    }
+    .cv-section h3 { font-size: 0.95rem !important; margin-top: 0.4rem !important; margin-bottom: 0.2rem !important; color: #1e3a8a !important; }
+    .cv-section p, .cv-section li { font-size: 8.5pt !important; line-height: 1.3 !important; color: #334155 !important; }
+    .cv-section ul { margin-top: 0.2rem !important; padding-left: 16px !important; }
+    .cv-section .date-location { font-size: 7.5pt !important; margin-bottom: 0.2rem !important; }
+    .cv-section .skills-list span { 
+        display: inline-block !important; 
+        background-color: #eff6ff !important; 
+        color: #1d4ed8 !important; 
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        padding: 2px 5px !important; 
+        margin: 1px 2px !important; 
+        border: 1px solid #bfdbfe !important; 
+        border-radius: 0.25rem !important; 
+        font-size: 7.5pt !important; 
+        font-weight: 500 !important;
+        vertical-align: middle !important; 
+    }
+    .cv-section div.skills-list p { line-height: 1.5 !important; margin-bottom: 0.25rem !important; }
+    footer { display: none !important; }
 }
