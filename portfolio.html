@@ -29,7 +29,7 @@
     <section class="section hero-section">
         <div class="container hero-content">
             <h1 data-text="Alcileudo Gustavo"><span id="typing-text" class="typing-text"></span></h1>
-            <p data-scroll>Engenheiro de Software em formação focado em <strong>Python/Django</strong> e <strong>Arquitetura de Sistemas</strong>. Especialista em transformar processos empresariais complexos em aplicações web robustas, escaláveis e automatizadas.</p>
+            <p data-scroll>Engenheiro de Software Júnior e <strong>AI Builder</strong> focado em <strong>Python/Django</strong>, <strong>Model Context Protocol (MCP)</strong> e <strong>Arquitetura de Sistemas</strong>. Especialista em transformar processos empresariais complexos em agentes inteligentes e aplicações web robustas, escaláveis e automatizadas.</p>
         </div>
     </section>
 
@@ -39,8 +39,8 @@
             <div class="timeline">
                 <div class="timeline-item current" data-scroll>
                     <div class="timeline-content">
-                        <h3>Estagiário de Desenvolvimento Full-stack - Bullla</h3>
-                        <p class="timeline-date">Atual</p>
+                        <h3>Engenheiro de Software Júnior — Bullla</h3>
+                        <p class="timeline-date">Abril de 2026 – Presente (Promovido após 8 meses de Estágio)</p>
                         <ul>
                             <li>Desenvolvimento de sistema complexo de cálculo de rebate usando Python/Django</li>
                             <li>Trabalho em equipe com gerente de produto e especialista SQL</li>
@@ -52,12 +52,12 @@
                 </div>
                 <div class="timeline-item future" data-scroll>
                     <div class="timeline-content">
-                        <h3>Próximos Passos Técnicos</h3>
+                        <h3>Foco Atual & Inteligência Artificial</h3>
                         <ul>
-                            <li>Automação de testes para cálculos de rebate (pytest)</li>
-                            <li>Implementação de validações nos modelos Django</li>
-                            <li>Configuração de monitoramento de erros com Sentry</li>
-                            <li>Integração com N8N para automação de processos</li>
+                            <li>Desenvolvimento de servidores Model Context Protocol (MCP) para agentes de IA</li>
+                            <li>Orquestração de agentes autônomos com Agno e Google GenAI SDK</li>
+                            <li>Deploy de microsserviços e servidores MCP no Google Cloud Run e Docker</li>
+                            <li>Automação de testes para regras de negócio e cálculos fiscais (pytest)</li>
                             <li>Desenvolvimento de APIs com Django REST Framework</li>
                         </ul>
                     </div>
@@ -70,6 +70,68 @@
         <div class="container">
             <h2 class="section-title" data-scroll>Projetos em Destaque</h2>
             <div class="projects-grid">
+                <div class="project-card" data-scroll>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-type">Inteligência Artificial & Agentes</div>
+                            <h3>Pipefy MCP Enterprise</h3>
+                        </div>
+                        
+                        <div class="project-case-study" style="margin: 15px 0;">
+                            <p style="margin-bottom: 8px;"><strong>⚠️ Desafio:</strong> Conectar agentes de IA (Google Gemini Enterprise e Antigravity) diretamente a fluxos de trabalho e tabelas corporativas do Pipefy com segurança, terminação TLS e sem expor credenciais.</p>
+                            <p style="margin-bottom: 8px;"><strong>🛠️ Solução:</strong> Construção de servidor corporativo baseado na especificação <strong>Model Context Protocol (MCP)</strong> sobre Starlette/Uvicorn. Implementação de curadoria inteligente de ferramentas, transporte StreamableHTTP e empacotamento em Docker com deploy no Cloud Run.</p>
+                            <p><strong>🚀 Impacto:</strong> Permite que agentes realizem ações transacionais completas (criação de cards, consultas estruturadas) em produção com latência mínima e arquitetura de custo zero.</p>
+                        </div>
+
+                        <ul class="project-highlights">
+                            <li>Suporte dual: modo --stdio para IDE local e StreamableHTTP para nuvem</li>
+                            <li>Deploy automatizado no Google Cloud Run com Docker</li>
+                            <li>Curadoria de ferramentas para compliance com limites de context window</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>MCP SDK</span>
+                            <span>Gemini</span>
+                            <span>Docker</span>
+                            <span>Cloud Run</span>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://github.com/pupo68/mcp-pipefy" target="_blank" rel="noopener noreferrer" class="text-primary-color hover:underline">Ver no GitHub →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-scroll>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-type">Agente Autônomo & Analytics</div>
+                            <h3>Data Agent IA</h3>
+                        </div>
+                        
+                        <div class="project-case-study" style="margin: 15px 0;">
+                            <p style="margin-bottom: 8px;"><strong>⚠️ Desafio:</strong> Tornar a análise de datasets tabulares acessível e instantânea para times de negócio, sem a necessidade de criação manual de scripts ou queries ad-hoc repetitivas.</p>
+                            <p style="margin-bottom: 8px;"><strong>🛠️ Solução:</strong> Agente analítico inteligente desenvolvido em Python com o framework moderno <strong>Agno</strong> e <strong>Google GenAI SDK</strong>. O agente interpreta perguntas em linguagem natural, executa análises estatísticas em Pandas e sintetiza insights visuais.</p>
+                            <p><strong>🚀 Impacto:</strong> Redução drástica no tempo de resposta para exploração de dados, automatizando fluxos analíticos e geração de gráficos interpretados.</p>
+                        </div>
+
+                        <ul class="project-highlights">
+                            <li>Orquestração com framework de ponta Agno (Phidata)</li>
+                            <li>Processamento e visualização automática de dados com Pandas e Matplotlib</li>
+                            <li>Geração de insights de negócio estruturados via LLM</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Agno</span>
+                            <span>Google GenAI</span>
+                            <span>Pandas</span>
+                            <span>Matplotlib</span>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://github.com/pupo68/data-agent-ia" target="_blank" rel="noopener noreferrer" class="text-primary-color hover:underline">Ver no GitHub →</a>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="project-card" data-scroll>
                     <div class="project-content">
                         <div class="project-header">
@@ -164,6 +226,29 @@
         <div class="container">
             <h2 class="section-title" data-scroll>Habilidades Técnicas</h2>
             <div class="skills-grid">
+                <div class="skill-category" data-scroll>
+                    <h3>IA & Agentes</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">Model Context Protocol (MCP)</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Agno & Google GenAI</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Prompt Eng. & Tool Use</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="skill-category" data-scroll>
                     <h3>Back-end</h3>
                     <div class="skill-items">

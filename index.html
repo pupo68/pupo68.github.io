@@ -42,9 +42,13 @@
             <section id="destaques" class="cv-section">
                 <h2><i class="fas fa-star mr-2"></i>DESTAQUES</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-indigo-50 p-4 rounded-lg">
+                        <h3 class="text-indigo-600"><i class="fas fa-robot mr-2"></i>AI Building & MCP</h3>
+                        <p>Criação de agentes autônomos e servidores corporativos com Model Context Protocol (MCP), Google GenAI e Agno.</p>
+                    </div>
                     <div class="bg-blue-50 p-4 rounded-lg">
                         <h3 class="text-blue-600"><i class="fas fa-code mr-2"></i>Desenvolvimento Full Stack</h3>
-                        <p>Experiência com Python/Django, PostgreSQL e JavaScript, desenvolvendo sistemas empresariais complexos.</p>
+                        <p>Experiência sólida com Python/Django, PostgreSQL e JavaScript, desenvolvendo sistemas empresariais complexos.</p>
                     </div>
                     <div class="bg-green-50 p-4 rounded-lg">
                         <h3 class="text-green-600"><i class="fas fa-chart-line mr-2"></i>Análise de Dados</h3>
@@ -69,8 +73,8 @@
             <section id="experiencia" class="cv-section">
                 <h2><i class="fas fa-briefcase mr-2"></i>EXPERIÊNCIA PROFISSIONAL</h2>
                 <div>
-                    <h3>Desenvolvedor Full Stack (Estágio) - Bullla</h3>
-                    <p class="date-location">Atual</p>
+                    <h3>Engenheiro de Software Júnior — Bullla</h3>
+                    <p class="date-location">Abril de 2026 – Presente (Promovido após 8 meses de Estágio)</p>
                     <ul>
                         <li>Desenvolvimento full-stack de sistema integrado para cálculo de rebates e comissões utilizando Python/Django e PostgreSQL, com foco em documentação e geração de artefatos.</li>
                         <li>Implementação de interface web responsiva e jornada interativa de faturamento utilizando JavaScript, HTML e CSS, incluindo geração dinâmica de PDFs.</li>
@@ -97,6 +101,30 @@
 
             <section id="projetos" class="cv-section">
                 <h2><i class="fas fa-project-diagram mr-2"></i>PROJETOS E INICIATIVAS</h2>
+                <div class="mb-6">
+                    <h3>Pipefy MCP Enterprise (Servidor Model Context Protocol)</h3>
+                    <div class="mb-2">
+                        <p class="text-gray-700 mb-1"><strong><i class="fas fa-exclamation-circle text-red-500 mr-1"></i>Desafio:</strong> Conectar agentes de IA (Google Gemini Enterprise e Antigravity) diretamente a fluxos de trabalho e bancos relacionais com segurança, governança e terminação TLS.</p>
+                        <p class="text-gray-700 mb-1"><strong><i class="fas fa-code text-blue-500 mr-1"></i>Solução:</strong> Construção de servidor corporativo baseado no protocolo aberto <strong>Model Context Protocol (MCP)</strong> sobre Starlette/Uvicorn, curadoria de toolsets e containerização com Docker para deploy serverless no Google Cloud Run.</p>
+                        <p class="text-gray-700"><strong><i class="fas fa-check-circle text-green-500 mr-1"></i>Resultado:</strong> Habilitação de agentes autônomos para consultar tabelas e movimentar pipes corporativos em produção com latência mínima e arquitetura de custo zero.</p>
+                    </div>
+                    <ul class="mt-2 text-sm text-gray-600">
+                        <li><span class="font-semibold">Tech Stack:</span> Python, FastMCP, Google Gemini SDK, Docker, Google Cloud Run.</li>
+                    </ul>
+                    <p class="mt-2"><strong>Link (GitHub):</strong> <a href="https://github.com/pupo68/mcp-pipefy" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">github.com/pupo68/mcp-pipefy</a></p>
+                </div>
+                <div class="mb-6">
+                    <h3>Data Agent IA (Agente Autônomo de Análise de Dados)</h3>
+                    <div class="mb-2">
+                        <p class="text-gray-700 mb-1"><strong><i class="fas fa-exclamation-circle text-red-500 mr-1"></i>Desafio:</strong> Permitir que stakeholders de negócios realizem consultas e análises complexas sobre bases tabulares sem depender de fila de engenharia de dados.</p>
+                        <p class="text-gray-700 mb-1"><strong><i class="fas fa-code text-blue-500 mr-1"></i>Solução:</strong> Agente analítico orquestrado com o framework <strong>Agno</strong> integrado ao <strong>Google GenAI</strong>, processando datasets com Pandas e gerando insights e gráficos automáticos.</p>
+                        <p class="text-gray-700"><strong><i class="fas fa-check-circle text-green-500 mr-1"></i>Resultado:</strong> Interface interativa capaz de receber perguntas em linguagem natural e retornar respostas estatísticas auditáveis e gráficos sob demanda.</p>
+                    </div>
+                    <ul class="mt-2 text-sm text-gray-600">
+                        <li><span class="font-semibold">Tech Stack:</span> Python, Agno, Google GenAI SDK, Pandas, Matplotlib.</li>
+                    </ul>
+                    <p class="mt-2"><strong>Link (GitHub):</strong> <a href="https://github.com/pupo68/data-agent-ia" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">github.com/pupo68/data-agent-ia</a></p>
+                </div>
                 <div class="mb-6">
                     <h3>Sistema de Gestão de Rebates - Bullla</h3>
                     <div class="mb-2">
@@ -137,12 +165,12 @@
             <section id="habilidades" class="cv-section">
                 <h2><i class="fas fa-cogs mr-2"></i>HABILIDADES TÉCNICAS</h2>
                 <div class="skills-list">
-                    <p><strong>Desenvolvimento Backend:</strong> <span>Python</span> <span>Django</span> <span>SQL</span> <span>PostgreSQL</span> <span>APIs REST</span></p>
-                    <p><strong>Desenvolvimento Frontend:</strong> <span>HTML5</span> <span>CSS3</span> <span>JavaScript</span> <span>UI/UX Básico</span></p>
-                    <p><strong>DevOps & Ferramentas:</strong> <span>Docker</span> <span>Git</span> <span>GitHub</span> <span>VS Code</span></p>
-                    <p><strong>Análise de Dados:</strong> <span>Power BI</span> <span>ETL</span> <span>Power Query</span> <span>Excel Avançado</span></p>
-                    <p><strong>Metodologias:</strong> <span>Metodologias Ágeis</span> <span>Versionamento</span> <span>Clean Code</span></p>
-                    <p><strong>Em Desenvolvimento:</strong> <span>Testes Unitários</span> <span>CI/CD</span> <span>Django REST Framework</span> <span>Automação com IA</span></p>
+                    <p><strong>Inteligência Artificial & Agentes:</strong> <span>Model Context Protocol (MCP)</span> <span>Agno</span> <span>Google GenAI SDK</span> <span>Gemini</span> <span>Prompt Engineering</span> <span>Tool Use</span></p>
+                    <p><strong>Desenvolvimento Backend:</strong> <span>Python</span> <span>Django</span> <span>SQL</span> <span>PostgreSQL</span> <span>APIs REST</span> <span>Django REST Framework</span></p>
+                    <p><strong>Desenvolvimento Frontend:</strong> <span>HTML5</span> <span>CSS3</span> <span>JavaScript</span> <span>UI/UX</span> <span>TailwindCSS</span></p>
+                    <p><strong>DevOps, Nuvem & Ferramentas:</strong> <span>Docker</span> <span>Google Cloud Run</span> <span>Git/GitHub</span> <span>CI/CD</span> <span>Linux</span></p>
+                    <p><strong>Análise de Dados & Automação:</strong> <span>Pandas</span> <span>Power BI</span> <span>ETL</span> <span>Power Query</span></p>
+                    <p><strong>Metodologias & Engenharia:</strong> <span>Metodologias Ágeis</span> <span>Clean Code</span> <span>Testes Automatizados (pytest)</span></p>
                 </div>
             </section>
 
